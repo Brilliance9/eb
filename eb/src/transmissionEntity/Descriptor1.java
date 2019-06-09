@@ -15,6 +15,7 @@ public class Descriptor1 {
 	private Program program;
 	public Descriptor1(){
 		this.reserved_future_use=4095;
+		this.descriptor_tag=44;
 	}
 
 	public int getDescriptor_tag() {

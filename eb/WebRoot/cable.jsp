@@ -130,7 +130,40 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 						<option value="17">STD描述符</option>
 						<option value="18">IBP描述符</option>
 						<option value="63">AVS Video descriptor</option>
+		    		</select><br/><br/><br/><br/>
+		    		<div class="first"> 有线传送系统描述符：</div><br/>
+		    		频率(小数形式)：
+    				<input type="text" class="a"  name="frequency" /><br/><br/>
+    				前向纠错外码：
+	    			<select  name="FEC_outer" class="a">
+						<option value="1">无FEC外码</option>
+						<option value="2">RS(204,188)</option>
 		    		</select><br/><br/>
+		    		调制方式：
+	    			<select  name="modulation" class="a">
+						<option value="1">16QAM</option>
+						<option value="2">32QAM</option>
+						<option value="3">64QAM</option>
+						<option value="4">128QAM</option>
+						<option value="5">256QAM</option>
+		    		</select><br/><br/>
+		    		符号率(小数形式)：
+    				<input type="text" class="a"  name="symbol_rate" /><br/><br/>
+    				前向纠错内码：
+	    			<select  name="FEC_outer" class="a">
+						<option value="1">卷积码率1/2</option>
+						<option value="2">卷积码率2/3</option>
+						<option value="3">卷积码率3/4</option>
+						<option value="4">卷积码率5/6</option>
+						<option value="5">卷积码率7/8</option>
+						<option value="6">卷积码率3/5</option>
+						<option value="7">卷积码率4/5</option>
+						<option value="8">卷积码率9/10</option>
+						<option value="9">卷积码率13/15</option>
+						<option value="15">无卷积编码</option>
+		    		</select><br/><br/><br/><br/>
+		    		
+		    		
 		    		<div class="first"> 视频流描述符 GB/T 17975.2或GB/T 17191.2：</div><br/>
 		    		多种帧速率标志字段：
 	    			<select  name="multiple_frame_rate_flag1" class="a">
@@ -207,7 +240,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			    		<select  name="frame_rate_extension_flag" class="a"> 
 							<option value="0">0</option>
 							<option value="1">1</option>
-			    		</select><br/><br/>
+			    		</select><br/><br/><br/><br/>
 		    		</div>
 		    		<div class="first"> 音频流描述符：</div><br/>
 	    		</div>
