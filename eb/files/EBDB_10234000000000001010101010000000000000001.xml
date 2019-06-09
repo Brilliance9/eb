@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<EBD>
+  <EBDVersion>1</EBDVersion>
+  <EBDID>10234000000000001010101010000000000000001</EBDID>
+  <EBDType>EBM</EBDType>
+  <SRC>
+    <EBRID>23400000000000101010101</EBRID>
+    <URL>http://192.168.5.58:8080/EmergencyServer/receive/ebd</URL>
+  </SRC>
+  <DEST>
+    <EBRID>33415000000000101010101</EBRID>
+  </DEST>
+  <EBDTime>2017-06-07 13:40:36</EBDTime>
+  <RelatedEBD>
+    <EBDID>34154364</EBDID>
+  </RelatedEBD>
+  <EBM>
+    <EBMVersion>1.0000</EBMVersion>
+    <EBMID>23400000000000101010101201701010001</EBMID>
+    <RelatedInfo>
+      <EBIID>EBD.EBM.RelatedInfo.EBIID</EBIID>
+      <EBMID>EBD.EBM.RelatedInfo&gt;EBMID</EBMID>
+    </RelatedInfo>
+    <MsgBasicInfo>
+      <MsgType>1</MsgType>
+      <SenderName>安徽省应急广播中心</SenderName>
+      <SenderCode>0001</SenderCode>
+      <SendTime>2017-06-07 13:37:44</SendTime>
+      <EventType>11B06</EventType>
+      <Severity>1</Severity>
+      <StartTime>2017-01-01 13:37:44</StartTime>
+      <EndTime>2017-01-01 14:37:44</EndTime>
+    </MsgBasicInfo>
+    <MsgContent>
+      <LanguageCode>zho</LanguageCode>
+      <MsgTitle>气象预警</MsgTitle>
+      <MsgDesc>安徽省气象局发布气象预警</MsgDesc>
+      <AreaCode>340000000000</AreaCode>
+      <ProgramNum>1</ProgramNum>
+      <Auxiliary>
+        <AuxiliaryType>AuxiliaryType</AuxiliaryType>
+        <AuxiliaryDesc>AuxiliaryDesc</AuxiliaryDesc>
+        <Size>Size</Size>
+        <Digest>Digest</Digest>
+      </Auxiliary>
+    </MsgContent>
+    <Dispatch>
+      <LanguageCode>LanguageCode</LanguageCode>
+      <EBRPS>
+        <EBRID>EBM_D_EBRPS</EBRID>
+      </EBRPS>
+      <EBRRTS>
+        <EBRID>EBM_D_EBRRTS</EBRID>
+      </EBRRTS>
+      <EBRAS>
+        <EBRID>EBM_D_EBRAS</EBRID>
+      </EBRAS>
+      <EBRBS>
+        <BrdSysType>BrdSysType</BrdSysType>
+        <BrdSysInfo>BrdSysInfo</BrdSysInfo>
+      </EBRBS>
+    </Dispatch>
+  </EBM>
+</EBD>

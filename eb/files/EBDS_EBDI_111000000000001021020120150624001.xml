@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<Signature>
+  <Version>1</Version>
+  <RelatedEBInfo>
+    <EBInfoID>111000000000001021020120150624001</EBInfoID>
+  </RelatedEBInfo>
+  <CertSN></CertSN>
+  <SignatureAlgorithm>SM2-SM3</SignatureAlgorithm>
+  <SignatureValue></SignatureValue>
+</Signature>

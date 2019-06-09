@@ -1,0 +1,13 @@
+@CHARSET "UTF-8";
+ul,li,i{ list-style:none; padding:0; margin:0; font-style:normal;}
+i{ width:14px; height:14px; float:left;}
+.box{ width:100%; max-width:300px; margin:0 auto;}
+.nav-ml{ width:100%;}
+.nav-ml ul{ margin-left:20px;}
+.nav-ml i{width:14px; height:14px; background:url(../images/ml-nav-ico.png) no-repeat 0 0; margin-right:10px;}
+.nav-ml i.unfold{width:14px; height:14px;  background:url(../images/ml-nav-ico.png) no-repeat -14px 0;}
+.nav-ml a{display:block; font-size:14px; height:20px; padding:3px 0; color:#666; overflow:hidden;}
+.nav-first,.nav-second,.nav-three{ margin-left:20px;}
+.nav-three li{ background:url(../images/b-dot.jpg) no-repeat 0 8px; padding-left:10px;}
+.fold{ display:none;}
+.nav-three li:hover{ background-color:#fffceb;}
