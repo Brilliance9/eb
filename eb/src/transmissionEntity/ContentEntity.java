@@ -1,5 +1,7 @@
 package transmissionEntity;
 
+import java.util.Arrays;
+
 public class ContentEntity {
 
 	private int table_id;
@@ -142,6 +144,18 @@ public class ContentEntity {
 
 	public void setCRC_32(int cRC_32) {
 		CRC_32 = cRC_32;
+	}
+
+	@Override
+	public String toString() {
+		return "ContentEntity [table_id=" + table_id + ", section_syntax_indicator=" + section_syntax_indicator
+				+ ", reserved=" + reserved + ", section_length=" + section_length + ", table_id_extension="
+				+ table_id_extension + ", reserved2=" + reserved2 + ", version_number=" + version_number
+				+ ", current_next_indicator=" + current_next_indicator + ", section_number=" + section_number
+				+ ", last_section_number=" + last_section_number + ", reserved3=" + reserved3 + ", EBM_id=" + EBM_id
+				+ ", reserved4=" + reserved4 + ", multilingual_content_number=" + multilingual_content_number
+				+ ", Multilingual_content=" + Arrays.toString(Multilingual_content) + ", signature_length="
+				+ signature_length + ", signature_data=" + signature_data + ", CRC_32=" + CRC_32 + "]";
 	}
 	
 	

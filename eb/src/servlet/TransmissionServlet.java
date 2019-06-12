@@ -16,10 +16,13 @@ import transmission.AnalogFM;
 import transmission.Cable;
 import transmission.Medium;
 import transmissionEntity.AnalogFMEntity;
+import transmissionEntity.Auxiliary_dataEntity;
+import transmissionEntity.ContentEntity;
 import transmissionEntity.Descriptor1;
 import transmissionEntity.EBMEntity;
 import transmissionEntity.IndexEntity;
 import transmissionEntity.MediumEntity;
+import transmissionEntity.Multilingual_contentEntity;
 import transmissionEntity.Program;
 import transmissionEntity.StreamEntity;
 
@@ -662,14 +665,91 @@ public class TransmissionServlet extends HttpServlet {
 	}
 	
 	public void cable254(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		System.out.println(254);
-		System.out.println(request.getParameter("multilingual_content_number"));
+		ContentEntity ce = new ContentEntity();
 		
-		String[] ss =request.getParameterValues("auxiliary_data_number");
-		System.out.println("length:"+ss.length);
-		for(int i=0;i<ss.length;i++){
-			System.out.println("ss"+i+":"+ss[i]);
+//		ce.set(String2Int(request.getParameter("")));
+		//section_length
+		
+		ce.setTable_id_extension(String2Int(request.getParameter("table_id_extension")));
+		ce.setVersion_number(String2Int(request.getParameter("version_number")));
+		ce.setCurrent_next_indicator(String2Int(request.getParameter("current_next_indicator")));
+		ce.setSection_number(String2Int(request.getParameter("section_number")));
+		ce.setLast_section_number(String2Int(request.getParameter("last_section_number")));
+		ce.setEBM_id(request.getParameter("EBM_id"));
+		ce.setMultilingual_content_number(String2Int(request.getParameter("multilingual_content_number")));
+		
+		Multilingual_contentEntity[] me= new Multilingual_contentEntity[ce.getMultilingual_content_number()];
+		for(int i=0;i<me.length;i++){
+			me[i]= new Multilingual_contentEntity();
 		}
+		//multilingual_content_length
+
+		String[]  language_code= request.getParameterValues("language_code");
+		int[] code_character_set= String2Ints(request.getParameterValues("code_character_set"));
+		//message_text_length
+		String[] message_text = request.getParameterValues("message_text");
+		int[] message_text_length = new int[message_text.length];
+		for(int i=0;i<message_text.length;i++){
+			message_text_length[i] = message_text[i].length();
+		}
+		//agency_name_length
+		String[] agency_name = request.getParameterValues("agency_name");
+		int[] agency_name_length = new int[agency_name.length];
+		for(int i=0;i<agency_name_length.length;i++){
+			agency_name_length[i] = agency_name[i].length();
+		}
+		int[] auxiliary_data_number= String2Ints(request.getParameterValues("auxiliary_data_number"));
+		int[] auxiliary_data_type= String2Ints(request.getParameterValues("auxiliary_data_type"));
+		String[]  auxiliary_data= request.getParameterValues("auxiliary_data");
+		int[] auxiliary_data_length = new int[auxiliary_data_type.length];
+		for(int i=0;i<auxiliary_data_length.length;i++){
+			auxiliary_data_length[i] =auxiliary_data[i].length();
+		}
+		//auxiliary_data_length
+		
+		
+		for(int i=0;i<me.length;i++){
+			me[i].setLanguage_code(language_code[i]);
+			me[i].setCode_character_set(code_character_set[i]);
+			me[i].setMessage_text(message_text[i]);
+			me[i].setMessage_text_length(message_text_length[i]);
+			me[i].setAgency_name(agency_name[i]);
+			me[i].setAgency_name_length(agency_name_length[i]);
+			me[i].setAuxiliary_data_number(auxiliary_data_number[i]);
+			Auxiliary_dataEntity[] item =new Auxiliary_dataEntity[auxiliary_data_number[i]];
+			for(int j=0;j<item.length;j++){
+				item[j] = new Auxiliary_dataEntity();
+				
+			}
+			int adn=0;
+			
+			for(int j=0;j<i;j++){
+				adn += me[j].getAuxiliary_data_number();
+			}
+			for(int j=adn;j<adn+auxiliary_data_number[i];j++){
+				item[j-adn].setAuxiliary_data_type(auxiliary_data_type[j]);
+				item[j-adn].setAuxiliary_data(auxiliary_data[j]);
+				item[j-adn].setAuxiliary_data_length(auxiliary_data_length[j]);
+			}
+			me[i].setAuxiliary_data(item);
+			int multilingual_content_length=0;
+			multilingual_content_length = 8+message_text_length[i]+agency_name_length[i];
+			for(int k=0;k<me[i].getAuxiliary_data().length;k++){
+				multilingual_content_length += 3+me[i].getAuxiliary_data()[k].getAuxiliary_data_length();
+			}
+			me[i].setMultilingual_content_length(multilingual_content_length);
+		}
+		ce.setMultilingual_content(me);
+		int section_length=24;
+		for(int i=0;i<ce.getMultilingual_content_number();i++){
+			section_length += 4+ce.getMultilingual_content()[i].getMultilingual_content_length();
+		}
+		ce.setSection_length(section_length);
+		ce.setSignature_length(64);
+		
+		ce.setSignature_data("0000000000000000000000000000000000000000000000000000000000000000");
+		ce.setCRC_32(1234);
+		System.out.println(ce.toString());
 	}
 	
 	public void cable252(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

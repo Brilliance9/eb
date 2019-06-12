@@ -61,37 +61,38 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     	
     	<div id="multilingual_content">
 	    	语种代码：
-	    	<input type="text" class="a"  name="language_code" /><br/><br/>
-	    	编码字符集：
-	    	<select  name="code_character_set" class="a">
-				<option value="0">GB/T 2312-1980</option>
-				<option value="1">GB/T 18030-2005</option>
-				<option value="2">GB/T 13000-2010</option>
-				<option value="3">GB/T 21669-2008</option>
-				<option value="4">GB/T 16959-1997</option>
-	    	</select><br/><br/>
-	    	文本内容：
-	    	<textarea rows="5" cols="40" name="message_text"></textarea><br/><br/>
-	    	消息发布机构名称：
-	    	<input type="text" class="a"  name="agency_name" /><br/><br/>
+  			<input type="text" class="a"  name="language_code" /><br/><br/>
+  			编码字符集：
+  			<select  name="code_character_set" class="a">
+	  			<option value="0">GB/T 2312-1980</option>
+	  			<option value="1">GB/T 18030-2005</option>
+	  			<option value="2">GB/T 13000-2010</option>
+	  			<option value="3">GB/T 21669-2008</option>
+	  			<option value="4">GB/T 16959-1997</option>
+  			</select><br/><br/>
+  			文本内容：
+  			<textarea rows="5" cols="40" name="message_text"></textarea><br/><br/>
+  			消息发布机构名称：
+  			<input type="text" class="a"  name="agency_name" /><br/><br/>
+  			
 	    	
-	    	<div id="auxiliary">
-	    		辅助数据数量：
-	    		<input type="text" class="a"  name="auxiliary_data_number" id="auxiliary_data_number" oninput="auxiliaryFun(this)"/><br/><br/>
-	    		辅助数据类型：
-		        <select name="auxiliary_data_type" class="a">
-					<option value="1">MPEG-1 LayerI/II 音频文件</option>
-					<option value="2">MPEG-1 LayerIII 音频文件</option>
-					<option value="3">DRA 音频文件</option>
-					<option value="4">DRA+音频文件</option>
-					<option value="41">PNG 图片文件</option>
-					<option value="42">JPEG 图片文件</option>
-					<option value="43">GIF 图片文件</option>
-					<option value="61">音视频流</option>
-		    	</select><br/><br/>
-		    	辅助数据：
-	    		<input type="text" class="a"  name="auxiliary_data" /><br/><br/><br/><br/>
-	    	</div>
+  			<div id="auxiliary">
+  			辅助数据数量：
+  			<input type="text" class="a"  name="auxiliary_data_number" id="auxiliary_data_number" oninput="auxiliaryFun(this)"/><br/><br/>
+  			辅助数据类型：
+  			<select name="auxiliary_data_type" class="a">
+  				<option value="1">MPEG-1 LayerI/II 音频文件</option>
+  				<option value="2">MPEG-1 LayerIII 音频文件</option>
+  				<option value="3">DRA 音频文件</option>
+  				<option value="4">DRA+音频文件</option>
+  				<option value="41">PNG 图片文件</option>
+  				<option value="42">JPEG 图片文件</option>
+  				<option value="43">GIF 图片文件</option>
+  				<option value="61">音视频流</option>
+  			</select><br/><br/>
+  			辅助数据：
+  			<input type="text" class="a"  name="auxiliary_data" /><br/><br/><br/><br/>
+  			</div>
     	</div>
     	
     	

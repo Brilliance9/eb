@@ -23,5 +23,10 @@ public class Auxiliary_dataEntity {
 	public void setAuxiliary_data(String auxiliary_data) {
 		this.auxiliary_data = auxiliary_data;
 	}
+	@Override
+	public String toString() {
+		return "Auxiliary_dataEntity [auxiliary_data_type=" + auxiliary_data_type + ", auxiliary_data_length="
+				+ auxiliary_data_length + ", auxiliary_data=" + auxiliary_data + "]";
+	}
 	
 }

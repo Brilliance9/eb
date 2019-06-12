@@ -192,9 +192,9 @@ function EBMFun(id){
   			+'<input type="text" class="a"  name="agency_name" /><br/><br/>'
   			
 	    	
-  			+'<div id="auxiliary'+i+'">'
+  			+'<div id="auxiliary">'
   			+'辅助数据数量：'
-  			+'<input type="text" class="a"  name="auxiliary_data_number" id="auxiliary_data_number'+i+'" oninput="auxiliaryFun(this)"/><br/><br/>'
+  			+'<input type="text" class="a"  name="auxiliary_data_number" id="auxiliary_data_number" oninput="auxiliaryFun(this)"/><br/><br/>'
   			+'辅助数据类型：'
   			+'<select name="auxiliary_data_type" class="a">'
   			+'	<option value="1">MPEG-1 LayerI/II 音频文件</option>'
@@ -214,10 +214,10 @@ function EBMFun(id){
   	multilingual_content.parentElement;
 }
 function auxiliaryFun(id){
-	var text=+'辅助数据数量：'
-	+'<input type="text" class="a"  name="auxiliary_data_number" id="auxiliary_data_number'+i+'" oninput="auxiliaryFun(this)"/><br/><br/>';
+	var text='辅助数据数量：'
+	+'<input type="text" class="a"  value="'+id.value+'" name="auxiliary_data_number" id="auxiliary_data_number" oninput="auxiliaryFun(this)"/><br/><br/>';
 	for(var i=0;i<id.value;i++){
-		text += +'辅助数据类型：'
+		text += '辅助数据类型：'
 			+'<select name="auxiliary_data_type" class="a">'
 			+'	<option value="1">MPEG-1 LayerI/II 音频文件</option>'
 			+'	<option value="2">MPEG-1 LayerIII 音频文件</option>'

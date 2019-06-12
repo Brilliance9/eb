@@ -1,5 +1,7 @@
 package transmissionEntity;
 
+import java.util.Arrays;
+
 public class Multilingual_contentEntity {
 
 	private int multilingual_content_length;
@@ -82,6 +84,15 @@ public class Multilingual_contentEntity {
 	}
 	public void setAuxiliary_data(Auxiliary_dataEntity[] auxiliary_data) {
 		Auxiliary_data = auxiliary_data;
+	}
+	@Override
+	public String toString() {
+		return "Multilingual_contentEntity [multilingual_content_length=" + multilingual_content_length
+				+ ", language_code=" + language_code + ", reserved1=" + reserved1 + ", code_character_set="
+				+ code_character_set + ", message_text_length=" + message_text_length + ", message_text=" + message_text
+				+ ", agency_name_length=" + agency_name_length + ", agency_name=" + agency_name + ", reserved2="
+				+ reserved2 + ", auxiliary_data_number=" + auxiliary_data_number + ", Auxiliary_data="
+				+ Arrays.toString(Auxiliary_data) + "]";
 	}
 	
 }

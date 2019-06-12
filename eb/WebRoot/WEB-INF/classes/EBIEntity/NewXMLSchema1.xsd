@@ -1,0 +1,257 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<xs:schema version="1.0" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+
+  <xs:complexType name="ebmDEBRAS">
+    <xs:sequence>
+      <xs:element name="EBRID" type="xs:string" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="ebmMsgContent">
+    <xs:sequence>
+      <xs:element name="areaCode" type="xs:string" minOccurs="0"/>
+      <xs:element name="auxiliary" type="ebmMsgCAuxiliary" minOccurs="0"/>
+      <xs:element name="languageCode" type="xs:string" minOccurs="0"/>
+      <xs:element name="msgDesc" type="xs:string" minOccurs="0"/>
+      <xs:element name="msgTitle" type="xs:string" minOccurs="0"/>
+      <xs:element name="programNum" type="xs:string" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="ebmMsgCAuxiliary">
+    <xs:sequence>
+      <xs:element name="auxiliaryDesc" type="xs:string" minOccurs="0"/>
+      <xs:element name="auxiliaryType" type="xs:string" minOccurs="0"/>
+      <xs:element name="digest" type="xs:string" minOccurs="0"/>
+      <xs:element name="size" type="xs:string" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="dom4JUtils">
+    <xs:sequence/>
+  </xs:complexType>
+
+  <xs:complexType name="ebd">
+    <xs:sequence>
+      <xs:element name="DEST" type="ebdDEST" minOccurs="0"/>
+      <xs:element name="EBDID" type="xs:string" minOccurs="0"/>
+      <xs:element name="EBDTime" type="xs:dateTime" minOccurs="0"/>
+      <xs:element name="EBDType" type="xs:string" minOccurs="0"/>
+      <xs:element name="EBDVersion" type="xs:string" minOccurs="0"/>
+      <xs:element name="EBM" type="ebdEBM" minOccurs="0"/>
+      <xs:element name="relatedEBD" type="ebdRelatedEBD" minOccurs="0"/>
+      <xs:element name="SRC" type="ebdSRC" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="ebdDEST">
+    <xs:sequence>
+      <xs:element name="EBRID" type="xs:string" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="ebdEBM">
+    <xs:sequence>
+      <xs:element name="dispatch" type="ebmDispatch" minOccurs="0"/>
+      <xs:element name="EBMID" type="xs:string" minOccurs="0"/>
+      <xs:element name="EBMVersion" type="xs:string" minOccurs="0"/>
+      <xs:element name="msgBasicInfo" type="ebmMsgBasicInfo" minOccurs="0"/>
+      <xs:element name="msgContent" type="ebmMsgContent" minOccurs="0"/>
+      <xs:element name="relatedInfo" type="ebmRelatedInfo" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="ebmDispatch">
+    <xs:sequence>
+      <xs:element name="EBRAS" type="ebmDEBRAS" minOccurs="0"/>
+      <xs:element name="EBRBS" type="ebmDEBRBS" minOccurs="0"/>
+      <xs:element name="EBRPS" type="ebmDEBRPS" minOccurs="0"/>
+      <xs:element name="EBRRTS" type="ebmDEBRRTS" minOccurs="0"/>
+      <xs:element name="languageCode" type="xs:string" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="ebmDEBRBS">
+    <xs:sequence>
+      <xs:element name="brdSysInfo" type="xs:string" minOccurs="0"/>
+      <xs:element name="brdSysType" type="xs:string" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="ebmDEBRPS">
+    <xs:sequence>
+      <xs:element name="EBDID" type="xs:string" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="ebmDEBRRTS">
+    <xs:sequence>
+      <xs:element name="EBRID" type="xs:string" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="ebmMsgBasicInfo">
+    <xs:sequence>
+      <xs:element name="endTime" type="xs:dateTime" minOccurs="0"/>
+      <xs:element name="eventType" type="xs:string" minOccurs="0"/>
+      <xs:element name="msgType" type="xs:string" minOccurs="0"/>
+      <xs:element name="sendTime" type="xs:dateTime" minOccurs="0"/>
+      <xs:element name="senderCode" type="xs:string" minOccurs="0"/>
+      <xs:element name="senderName" type="xs:string" minOccurs="0"/>
+      <xs:element name="severity" type="xs:string" minOccurs="0"/>
+      <xs:element name="startTime" type="xs:dateTime" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="ebmRelatedInfo">
+    <xs:sequence>
+      <xs:element name="EBIID" type="xs:string" minOccurs="0"/>
+      <xs:element name="EBMID" type="xs:string" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="ebdRelatedEBD">
+    <xs:sequence>
+      <xs:element name="EBDID" type="xs:string" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="ebdSRC">
+    <xs:sequence>
+      <xs:element name="EBRID" type="xs:string" minOccurs="0"/>
+      <xs:element name="URL" type="xs:string" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="broadcastStyle">
+    <xs:sequence>
+      <xs:element name="presentation" type="xs:string" minOccurs="0"/>
+      <xs:element name="publishFrequence" type="xs:string" minOccurs="0"/>
+      <xs:element name="publishMeans" type="xs:string" minOccurs="0"/>
+      <xs:element name="rollFrequency" type="xs:string" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="ebi">
+    <xs:sequence>
+      <xs:element name="area" type="ebiArea" minOccurs="0"/>
+      <xs:element name="EBContent" type="ebiEBContent" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+      <xs:element name="EBMainInfo" type="ebiEBMainInfo" minOccurs="0"/>
+      <xs:element name="extendInfo1" type="ebiExtendInfo1" minOccurs="0"/>
+      <xs:element name="extendInfo2" type="ebiExtendInfo2" minOccurs="0"/>
+      <xs:element name="publishStrategy" type="ebiPublishStrategy" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="ebiArea">
+    <xs:sequence>
+      <xs:element name="areaCircle" type="xs:string" minOccurs="0"/>
+      <xs:element name="areaDescription" type="xs:string" minOccurs="0"/>
+      <xs:element name="areaPolygon" type="xs:string" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="ebiEBContent">
+    <xs:sequence>
+      <xs:element name="attachments" type="attachment" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+      <xs:element name="codeSet" type="xs:string" minOccurs="0"/>
+      <xs:element name="eventDescription" type="xs:string" minOccurs="0"/>
+      <xs:element name="headline" type="xs:string" minOccurs="0"/>
+      <xs:element name="language" type="xs:string" minOccurs="0"/>
+      <xs:element name="languageCode" type="xs:string" minOccurs="0"/>
+      <xs:element name="programNum" type="xs:string" minOccurs="0"/>
+      <xs:element name="signer" type="xs:string" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="attachment">
+    <xs:sequence>
+      <xs:element name="attDescription" type="xs:string" minOccurs="0"/>
+      <xs:element name="attName" type="xs:string" minOccurs="0"/>
+      <xs:element name="attSize" type="xs:string" minOccurs="0"/>
+      <xs:element name="attSuffix" type="xs:string" minOccurs="0"/>
+      <xs:element name="attType" type="xs:string" minOccurs="0"/>
+      <xs:element name="attURL" type="xs:string" minOccurs="0"/>
+      <xs:element name="digest" type="xs:string" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="ebiEBMainInfo">
+    <xs:sequence>
+      <xs:element name="EBIID" type="xs:string" minOccurs="0"/>
+      <xs:element name="EBIVersion" type="xs:string" minOccurs="0"/>
+      <xs:element name="eventLevel" type="xs:string" minOccurs="0"/>
+      <xs:element name="eventType" type="xs:string" minOccurs="0"/>
+      <xs:element name="identifier" type="xs:string" minOccurs="0"/>
+      <xs:element name="infoID" type="xs:string" minOccurs="0"/>
+      <xs:element name="infoStatus" type="xs:string" minOccurs="0"/>
+      <xs:element name="infoType" type="xs:string" minOccurs="0"/>
+      <xs:element name="instructions" type="xs:string" minOccurs="0"/>
+      <xs:element name="isMediaRes" type="xs:string" minOccurs="0"/>
+      <xs:element name="isTTS" type="xs:string" minOccurs="0"/>
+      <xs:element name="referenceId" type="xs:string" minOccurs="0"/>
+      <xs:element name="sender" type="xs:string" minOccurs="0"/>
+      <xs:element name="senderCode" type="xs:string" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="ebiExtendInfo1">
+    <xs:sequence>
+      <xs:element name="altitude" type="xs:string" minOccurs="0"/>
+      <xs:element name="area" type="xs:string" minOccurs="0"/>
+      <xs:element name="depth" type="xs:string" minOccurs="0"/>
+      <xs:element name="dijishi" type="xs:string" minOccurs="0"/>
+      <xs:element name="earthquake_time" type="xs:dateTime" minOccurs="0"/>
+      <xs:element name="eq_type" type="xs:string" minOccurs="0"/>
+      <xs:element name="expedited_reporting_type" type="xs:string" minOccurs="0"/>
+      <xs:element name="five_earthquake" type="xs:string" minOccurs="0"/>
+      <xs:element name="gdp" type="xs:string" minOccurs="0"/>
+      <xs:element name="juli" type="xs:string" minOccurs="0"/>
+      <xs:element name="latitude" type="xs:string" minOccurs="0"/>
+      <xs:element name="level" type="xs:string" minOccurs="0"/>
+      <xs:element name="location_code" type="xs:string" minOccurs="0"/>
+      <xs:element name="longitude" type="xs:string" minOccurs="0"/>
+      <xs:element name="nearest_county" type="xs:string" minOccurs="0"/>
+      <xs:element name="nearest_prefecture" type="xs:string" minOccurs="0"/>
+      <xs:element name="nearest_provincial_capital" type="xs:string" minOccurs="0"/>
+      <xs:element name="nearest_town" type="xs:string" minOccurs="0"/>
+      <xs:element name="nearest_village" type="xs:string" minOccurs="0"/>
+      <xs:element name="place" type="xs:string" minOccurs="0"/>
+      <xs:element name="population" type="xs:string" minOccurs="0"/>
+      <xs:element name="range" type="xs:string" minOccurs="0"/>
+      <xs:element name="seismic_information" type="xs:string" minOccurs="0"/>
+      <xs:element name="shenghui" type="xs:string" minOccurs="0"/>
+      <xs:element name="towns" type="xs:string" minOccurs="0"/>
+      <xs:element name="villages" type="xs:string" minOccurs="0"/>
+      <xs:element name="WEATHER" type="xs:string" minOccurs="0"/>
+      <xs:element name="xianjishi" type="xs:string" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="ebiExtendInfo2">
+    <xs:sequence>
+      <xs:element name="airport" type="xs:string" minOccurs="0"/>
+      <xs:element name="airportStatus" type="xs:string" minOccurs="0"/>
+      <xs:element name="airportcode" type="xs:string" minOccurs="0"/>
+      <xs:element name="inbound_Delayedflights" type="xs:string" minOccurs="0"/>
+      <xs:element name="inbound_flights" type="xs:string" minOccurs="0"/>
+      <xs:element name="inbound_flights_number" type="xs:string" minOccurs="0"/>
+      <xs:element name="inbound_numberofpeople" type="xs:string" minOccurs="0"/>
+      <xs:element name="outbound_Delayedflights" type="xs:string" minOccurs="0"/>
+      <xs:element name="outbound_flights" type="xs:string" minOccurs="0"/>
+      <xs:element name="outbound_flightsnumber" type="xs:string" minOccurs="0"/>
+      <xs:element name="outbound_numberofpeople" type="xs:string" minOccurs="0"/>
+      <xs:element name="time" type="xs:dateTime" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="ebiPublishStrategy">
+    <xs:sequence>
+      <xs:element name="broadcastDateTime" type="xs:dateTime" minOccurs="0"/>
+      <xs:element name="broadcastStyle" type="broadcastStyle" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+      <xs:element name="overDateTime" type="xs:dateTime" minOccurs="0"/>
+      <xs:element name="publishRegion" type="xs:string" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>
+

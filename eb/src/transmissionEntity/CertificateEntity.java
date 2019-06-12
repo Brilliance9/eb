@@ -25,6 +25,7 @@ public class CertificateEntity {
 		this.table_id=252;
 		this.reserved=3;
 		this.reserved2=3;
+		this.section_syntax_indicator=1;
 	}
 	public int getTable_id() {
 		return table_id;
