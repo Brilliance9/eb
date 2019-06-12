@@ -5,7 +5,7 @@ public class Descriptor1 {
 	//GB/T 28161—2011中6.2.10.1的有线传送系统描述符
 	private int descriptor_tag;
 	private int descriptor_length;
-	private float frequency;
+	private double frequency;
 	private int reserved_future_use;
 	private int FEC_outer;
 	private int modulation;
@@ -34,11 +34,11 @@ public class Descriptor1 {
 		this.descriptor_length = descriptor_length;
 	}
 
-	public float getFrequency() {
+	public double getFrequency() {
 		return frequency;
 	}
 
-	public void setFrequency(float frequency) {
+	public void setFrequency(double frequency) {
 		this.frequency = frequency;
 	}
 

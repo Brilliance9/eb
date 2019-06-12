@@ -1,5 +1,10 @@
 package util;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
+
 import EBDEntity.EBD;
 import EBDEntity.EBD_DEST;
 import EBDEntity.EBD_EBM;
@@ -20,9 +25,31 @@ public class EBDTest {
 	/*
 	 * 用来测试EBDMaker制作xml
 	 */
-	public static void main(String[] args) {
+	public static void main(String[] args) throws ParseException {
 		// TODO Auto-generated method stub
+		String time = "2020-6-10T20:40";
+		String[] ss=time.split("T");
+		System.out.println(ss[0]);
+		String tt = ss[0]+" "+ss[1]+":00";
+		SimpleDateFormat sdf= new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+
+		Date date =sdf.parse(tt);
+
+		Calendar cc = Calendar.getInstance();
+
+		cc.setTime(date);
 		
+		int M = cc.get(Calendar.MONTH)+1;
+		int D = cc.get(Calendar.DAY_OF_MONTH);
+		int hour = cc.get(Calendar.HOUR_OF_DAY);
+		int minute = cc.get(Calendar.MINUTE);
+		int second = cc.get(Calendar.SECOND);
+		System.out.println(M);
+		System.out.println(D);
+		System.out.println(hour);
+		System.out.println(minute);
+		System.out.println(second);
+		System.out.println(cc.get(Calendar.YEAR));
 
 	}
 	public EBD test(){

@@ -293,7 +293,7 @@ public class Cable {
 		}
 		int M = cc.get(Calendar.MONTH)+1;
 		int D = cc.get(Calendar.DAY_OF_MONTH);
-		int hour = cc.get(Calendar.HOUR);
+		int hour = cc.get(Calendar.HOUR_OF_DAY);
 		int minute = cc.get(Calendar.MINUTE);
 		int second = cc.get(Calendar.SECOND);
 		int L=0;

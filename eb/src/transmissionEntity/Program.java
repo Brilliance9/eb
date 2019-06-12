@@ -3,8 +3,8 @@ package transmissionEntity;
 public class Program {
 
 	//GB/T 17975.1节目和节目元素描述符
-		private int descriptor_tag;
-		private int descriptor_length;
+		private int descriptor_tag2;
+		private int descriptor_length2;
 		//2  视频流描述符
 		//视频流应用的的国标，1或2
 		private int videoStandard;
@@ -22,6 +22,8 @@ public class Program {
 		
 		
 		//3  音频流描述符
+		private int descriptor_tag3;
+		private int descriptor_length3;
 		private int free_format_flag;
 		private int ID;
 		private int layer;
@@ -29,6 +31,8 @@ public class Program {
 		private int reserved31;
 		
 		//4 hierarchy_descriptor 层次流描述符
+		private int descriptor_tag4;
+		private int descriptor_length4;
 		private int reserved41;
 		private int hierarchy_type;
 		private int reserved42;
@@ -39,33 +43,47 @@ public class Program {
 		private int hierarchy_channel;
 		
 		//5 registration descriptor 登记描述符
+		private int descriptor_tag5;
+		private int descriptor_length5;
 		private int format_identifier;
 		private String additional_identification_info;
 		
 		//6 data stream alignment descriptor 数据流对齐描述符
+		private int descriptor_tag6;
+		private int descriptor_length6;
 		private int alignment_type;
 		
 		//7 target_background_grid_descriptor 目标背景栅格
+		private int descriptor_tag7;
+		private int descriptor_length7;
 		private int horizontal_size;
 		private int vertical_size;
 		private int aspect_ratio_information;
 		
 		//8 video_window-descniptor 视频窗描述符
+		private int descriptor_tag8;
+		private int descriptor_length8;
 		private int horizontal_offset;
 		private int vertical_offset;
 		private int window_priority;
 		
 		//9 CA descriptor 条件接入描述符
+		private int descriptor_tag9;
+		private int descriptor_length9;
 		private int CA_system_ID;
 		private int reserved91;
 		private int CA_PID;
 		private String private_data_byte;
 		
 		//10 ISO_639_language_descriptor  ISO_639语言描述符
+		private int descriptor_tag10;
+		private int descriptor_length10;
 		private String IS0_639_language_code;
 		private int audio_type;
 		
 		//11 system clock descriptor 系统时钟描述
+		private int descriptor_tag11;
+		private int descriptor_length11;
 		private int external_clock_reference_indicator;
 		private int reserved111;
 		private int clock_accuracy_integer;
@@ -73,39 +91,55 @@ public class Program {
 		private int reserved112;
 		
 		//12 multiplex_buffer_utilization-descriptor 复用缓冲区应用描述符
+		private int descriptor_tag12;
+		private int descriptor_length12;
 		private int bound_valid_flag;
 		private int LTW_offset_lower_bound;
 		private int reserved121;
 		private int LTW_offset_upper_bound;
 		
 		//13 copyright_descriptor 版权描述符
+		private int descriptor_tag13;
+		private int descriptor_length13;
 		private int copyright_identifier;
 		private String additional_copyright_info;
 		
 		//14 最大比特率描述符
+		private int descriptor_tag14;
+		private int descriptor_length14;
 		private int reserved141;
 		private int maximum_bitrate;
 		
 		//15 专用数据指示符描述符
+		private int descriptor_tag15;
+		private int descriptor_length15;
 		private int private_data_indicator;
 		
 		//16 平滑缓冲区描述符
+		private int descriptor_tag16;
+		private int descriptor_length16;
 		private int reserved161;
 		private int sb_leak_rate;
 		private int reserved162;
 		private int sb_size;
 		
 		//17 STD descriptor
+		private int descriptor_tag17;
+		private int descriptor_length17;
 		private int reserved171;
 		private int leak_valid_flag;
 		
 		//18 IBP描述符
+		private int descriptor_tag18;
+		private int descriptor_length18;
 		private int closed_gop_flag;
 		private int identical_gop_flag;
 		private int max_gop_length;
 		
 		//63 AVS Video descriptor
 		//GB/T 20090.2
+		private int descriptor_tag63;
+		private int descriptor_length63;
 		private int profile_id;
 		private int level_id;
 		private int multiple_frame_rate_flag2;
@@ -134,18 +168,24 @@ public class Program {
 			this.reserved161=3;
 			this.reserved162=3;
 			this.reserved171=127;
-		}
-		public int getDescriptor_tag() {
-			return descriptor_tag;
-		}
-		public void setDescriptor_tag(int descriptor_tag) {
-			this.descriptor_tag = descriptor_tag;
-		}
-		public int getDescriptor_length() {
-			return descriptor_length;
-		}
-		public void setDescriptor_length(int descriptor_length) {
-			this.descriptor_length = descriptor_length;
+			this.descriptor_tag2=2;
+			this.descriptor_tag3=3;
+			this.descriptor_tag4=4;
+			this.descriptor_tag5=5;
+			this.descriptor_tag6=6;
+			this.descriptor_tag7=7;
+			this.descriptor_tag8=8;
+			this.descriptor_tag9=9;
+			this.descriptor_tag10=10;
+			this.descriptor_tag11=11;
+			this.descriptor_tag12=12;
+			this.descriptor_tag13=13;
+			this.descriptor_tag14=14;
+			this.descriptor_tag15=15;
+			this.descriptor_tag16=16;
+			this.descriptor_tag17=17;
+			this.descriptor_tag18=18;
+			this.descriptor_tag63=63;
 		}
 		public int getMultiple_frame_rate_flag1() {
 			return multiple_frame_rate_flag1;
@@ -560,6 +600,222 @@ public class Program {
 		}
 		public void setMax_gop_length(int max_gop_length) {
 			this.max_gop_length = max_gop_length;
+		}
+		public int getDescriptor_tag2() {
+			return descriptor_tag2;
+		}
+		public void setDescriptor_tag2(int descriptor_tag2) {
+			this.descriptor_tag2 = descriptor_tag2;
+		}
+		public int getDescriptor_length2() {
+			return descriptor_length2;
+		}
+		public void setDescriptor_length2(int descriptor_length2) {
+			this.descriptor_length2 = descriptor_length2;
+		}
+		public int getDescriptor_tag3() {
+			return descriptor_tag3;
+		}
+		public void setDescriptor_tag3(int descriptor_tag3) {
+			this.descriptor_tag3 = descriptor_tag3;
+		}
+		public int getDescriptor_length3() {
+			return descriptor_length3;
+		}
+		public void setDescriptor_length3(int descriptor_length3) {
+			this.descriptor_length3 = descriptor_length3;
+		}
+		public int getDescriptor_tag4() {
+			return descriptor_tag4;
+		}
+		public void setDescriptor_tag4(int descriptor_tag4) {
+			this.descriptor_tag4 = descriptor_tag4;
+		}
+		public int getDescriptor_length4() {
+			return descriptor_length4;
+		}
+		public void setDescriptor_length4(int descriptor_length4) {
+			this.descriptor_length4 = descriptor_length4;
+		}
+		public int getDescriptor_tag5() {
+			return descriptor_tag5;
+		}
+		public void setDescriptor_tag5(int descriptor_tag5) {
+			this.descriptor_tag5 = descriptor_tag5;
+		}
+		public int getDescriptor_length5() {
+			return descriptor_length5;
+		}
+		public void setDescriptor_length5(int descriptor_length5) {
+			this.descriptor_length5 = descriptor_length5;
+		}
+		public int getDescriptor_tag6() {
+			return descriptor_tag6;
+		}
+		public void setDescriptor_tag6(int descriptor_tag6) {
+			this.descriptor_tag6 = descriptor_tag6;
+		}
+		public int getDescriptor_length6() {
+			return descriptor_length6;
+		}
+		public void setDescriptor_length6(int descriptor_length6) {
+			this.descriptor_length6 = descriptor_length6;
+		}
+		public int getDescriptor_tag7() {
+			return descriptor_tag7;
+		}
+		public void setDescriptor_tag7(int descriptor_tag7) {
+			this.descriptor_tag7 = descriptor_tag7;
+		}
+		public int getDescriptor_length7() {
+			return descriptor_length7;
+		}
+		public void setDescriptor_length7(int descriptor_length7) {
+			this.descriptor_length7 = descriptor_length7;
+		}
+		public int getDescriptor_tag8() {
+			return descriptor_tag8;
+		}
+		public void setDescriptor_tag8(int descriptor_tag8) {
+			this.descriptor_tag8 = descriptor_tag8;
+		}
+		public int getDescriptor_length8() {
+			return descriptor_length8;
+		}
+		public void setDescriptor_length8(int descriptor_length8) {
+			this.descriptor_length8 = descriptor_length8;
+		}
+		public int getDescriptor_tag9() {
+			return descriptor_tag9;
+		}
+		public void setDescriptor_tag9(int descriptor_tag9) {
+			this.descriptor_tag9 = descriptor_tag9;
+		}
+		public int getDescriptor_length9() {
+			return descriptor_length9;
+		}
+		public void setDescriptor_length9(int descriptor_length9) {
+			this.descriptor_length9 = descriptor_length9;
+		}
+		public int getDescriptor_tag10() {
+			return descriptor_tag10;
+		}
+		public void setDescriptor_tag10(int descriptor_tag10) {
+			this.descriptor_tag10 = descriptor_tag10;
+		}
+		public int getDescriptor_length10() {
+			return descriptor_length10;
+		}
+		public void setDescriptor_length10(int descriptor_length10) {
+			this.descriptor_length10 = descriptor_length10;
+		}
+		public int getDescriptor_tag11() {
+			return descriptor_tag11;
+		}
+		public void setDescriptor_tag11(int descriptor_tag11) {
+			this.descriptor_tag11 = descriptor_tag11;
+		}
+		public int getDescriptor_length11() {
+			return descriptor_length11;
+		}
+		public void setDescriptor_length11(int descriptor_length11) {
+			this.descriptor_length11 = descriptor_length11;
+		}
+		public int getDescriptor_tag12() {
+			return descriptor_tag12;
+		}
+		public void setDescriptor_tag12(int descriptor_tag12) {
+			this.descriptor_tag12 = descriptor_tag12;
+		}
+		public int getDescriptor_length12() {
+			return descriptor_length12;
+		}
+		public void setDescriptor_length12(int descriptor_length12) {
+			this.descriptor_length12 = descriptor_length12;
+		}
+		public int getDescriptor_tag13() {
+			return descriptor_tag13;
+		}
+		public void setDescriptor_tag13(int descriptor_tag13) {
+			this.descriptor_tag13 = descriptor_tag13;
+		}
+		public int getDescriptor_length13() {
+			return descriptor_length13;
+		}
+		public void setDescriptor_length13(int descriptor_length13) {
+			this.descriptor_length13 = descriptor_length13;
+		}
+		public int getDescriptor_tag14() {
+			return descriptor_tag14;
+		}
+		public void setDescriptor_tag14(int descriptor_tag14) {
+			this.descriptor_tag14 = descriptor_tag14;
+		}
+		public int getDescriptor_length14() {
+			return descriptor_length14;
+		}
+		public void setDescriptor_length14(int descriptor_length14) {
+			this.descriptor_length14 = descriptor_length14;
+		}
+		public int getDescriptor_tag15() {
+			return descriptor_tag15;
+		}
+		public void setDescriptor_tag15(int descriptor_tag15) {
+			this.descriptor_tag15 = descriptor_tag15;
+		}
+		public int getDescriptor_length15() {
+			return descriptor_length15;
+		}
+		public void setDescriptor_length15(int descriptor_length15) {
+			this.descriptor_length15 = descriptor_length15;
+		}
+		public int getDescriptor_tag16() {
+			return descriptor_tag16;
+		}
+		public void setDescriptor_tag16(int descriptor_tag16) {
+			this.descriptor_tag16 = descriptor_tag16;
+		}
+		public int getDescriptor_length16() {
+			return descriptor_length16;
+		}
+		public void setDescriptor_length16(int descriptor_length16) {
+			this.descriptor_length16 = descriptor_length16;
+		}
+		public int getDescriptor_tag17() {
+			return descriptor_tag17;
+		}
+		public void setDescriptor_tag17(int descriptor_tag17) {
+			this.descriptor_tag17 = descriptor_tag17;
+		}
+		public int getDescriptor_length17() {
+			return descriptor_length17;
+		}
+		public void setDescriptor_length17(int descriptor_length17) {
+			this.descriptor_length17 = descriptor_length17;
+		}
+		public int getDescriptor_tag18() {
+			return descriptor_tag18;
+		}
+		public void setDescriptor_tag18(int descriptor_tag18) {
+			this.descriptor_tag18 = descriptor_tag18;
+		}
+		public int getDescriptor_length18() {
+			return descriptor_length18;
+		}
+		public void setDescriptor_length18(int descriptor_length18) {
+			this.descriptor_length18 = descriptor_length18;
+		}
+		public int getDescriptor_tag63() {
+			return descriptor_tag63;
+		}
+		public void setDescriptor_tag63(int descriptor_tag63) {
+			this.descriptor_tag63 = descriptor_tag63;
+		}
+		public int getDescriptor_length63() {
+			return descriptor_length63;
+		}
+		public void setDescriptor_length63(int descriptor_length63) {
+			this.descriptor_length63 = descriptor_length63;
 		}
 		
 		
