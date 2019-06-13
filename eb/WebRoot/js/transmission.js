@@ -234,3 +234,20 @@ function auxiliaryFun(id){
 	}
 	id.parentElement.innerHTML=text;
 }
+//cable252.jsp
+function CertAuthFun(id){
+	var text = '';
+	for(var i=0;i<id.value;i++){
+		text += '证书授权列表数据：'
+			+'<textarea rows="5" cols="40" name="CertAuth_data"></textarea><br/><br/>';
+	}
+	document.getElementById("CertAuth").innerHTML=text;
+}
+function certFun(id){
+	var text = '';
+	for(var i=0;i<id.value;i++){
+		text += '证书数据：'
+			+'<textarea rows="5" cols="40" name="cert_data"></textarea><br/><br/>';
+	}
+	document.getElementById("cert").innerHTML=text;
+}

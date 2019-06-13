@@ -84,7 +84,7 @@ public class Cable {
 			}
 		}
 		enc.encInt(ie.getSignature_length(), 16);
-		enc.StringEnc(enc, ie.getSignature_data());
+		enc.ASCIIEnc(enc, ie.getSignature_data());
 		//CRC
 		enc.encInt(ie.getCRC_32(),32);
 		
@@ -132,10 +132,11 @@ public class Cable {
 			}
 		}
 		enc.encInt(ce.getSignature_length(), 16);
-		enc.StringEnc(enc, ce.getSignature_data());
+		enc.ASCIIEnc(enc, ce.getSignature_data());
 		//CRC
 		enc.encInt(ce.getCRC_32(),32);
-		
+		enc.Message2File();
+		enc.printmsg();
 	}
 	
 	//应急广播证书授权协议
@@ -162,9 +163,11 @@ public class Cable {
 			enc.ASCIIEnc(enc, ce.getCert_data()[i]);
 		}
 		enc.encInt(ce.getSignature_length(), 16);
-		enc.StringEnc(enc, ce.getSignature_data());
+		enc.ASCIIEnc(enc, ce.getSignature_data());
 		//CRC
 		enc.encInt(ce.getCRC_32(),32);
+		enc.Message2File();
+		enc.printmsg();
 	}
 	
 	
@@ -276,9 +279,11 @@ public class Cable {
 			}
 		}
 		enc.encInt(ce.getSignature_length(), 16);
-		enc.StringEnc(enc, ce.getSignature_data());
+		enc.ASCIIEnc(enc, ce.getSignature_data());
 		//CRC
 		enc.encInt(ce.getCRC_32(),32);
+		enc.Message2File();
+		enc.printmsg();
 	}
 	
 	//转换为MJD时间封装，算法见有线数字电视附录

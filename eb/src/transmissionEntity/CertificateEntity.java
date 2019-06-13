@@ -1,5 +1,7 @@
 package transmissionEntity;
 
+import java.util.Arrays;
+
 public class CertificateEntity {
 
 	private int table_id;
@@ -140,6 +142,18 @@ public class CertificateEntity {
 	}
 	public void setCRC_32(int cRC_32) {
 		CRC_32 = cRC_32;
+	}
+	@Override
+	public String toString() {
+		return "CertificateEntity [table_id=" + table_id + ", section_syntax_indicator=" + section_syntax_indicator
+				+ ", reserved=" + reserved + ", section_length=" + section_length + ", table_id_extension="
+				+ table_id_extension + ", reserved2=" + reserved2 + ", version_number=" + version_number
+				+ ", current_next_indicator=" + current_next_indicator + ", section_number=" + section_number
+				+ ", last_section_number=" + last_section_number + ", CertAuth_number=" + CertAuth_number
+				+ ", CertAuth_length=" + Arrays.toString(CertAuth_length) + ", CertAuth_data="
+				+ Arrays.toString(CertAuth_data) + ", cert_number=" + cert_number + ", cert_length="
+				+ Arrays.toString(cert_length) + ", cert_data=" + Arrays.toString(cert_data) + ", signature_length="
+				+ signature_length + ", signature_data=" + signature_data + ", CRC_32=" + CRC_32 + "]";
 	}
 
 }

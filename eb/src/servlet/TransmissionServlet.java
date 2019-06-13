@@ -17,6 +17,7 @@ import transmission.Cable;
 import transmission.Medium;
 import transmissionEntity.AnalogFMEntity;
 import transmissionEntity.Auxiliary_dataEntity;
+import transmissionEntity.CertificateEntity;
 import transmissionEntity.ContentEntity;
 import transmissionEntity.Descriptor1;
 import transmissionEntity.EBMEntity;
@@ -640,7 +641,8 @@ public class TransmissionServlet extends HttpServlet {
 		ebm[0].setStream_info_length(stream_info_length);
 		
 		
-		int EBM_length=0;
+		int EBM_length=38;
+//		if()
 		EBM_length=48+ebm[0].getDetails_channel_program_info_length()+ebm[0].getStream_info_length()+12*ebm[0].getEBM_resource_number();
 		ebm[0].setEBM_length(EBM_length);
 		
@@ -650,7 +652,10 @@ public class TransmissionServlet extends HttpServlet {
 			section_length += 2+ebm[i].getEBM_length();
 		}
 		ie.setSection_length(section_length);
-		
+		System.out.println("section_length:"+section_length);
+		System.out.println("EBM_length:"+EBM_length);
+		System.out.println("stream_info_length:"+stream_info_length);
+		System.out.println("EBM_length:"+EBM_length);
 		ie.setSignature_length(64);
 		
 		ie.setSignature_data("0000000000000000000000000000000000000000000000000000000000000000");
@@ -745,15 +750,54 @@ public class TransmissionServlet extends HttpServlet {
 			section_length += 4+ce.getMultilingual_content()[i].getMultilingual_content_length();
 		}
 		ce.setSection_length(section_length);
-		ce.setSignature_length(64);
 		
+		ce.setSignature_length(64);
 		ce.setSignature_data("0000000000000000000000000000000000000000000000000000000000000000");
 		ce.setCRC_32(1234);
 		System.out.println(ce.toString());
+		
+		Cable cable = new Cable();
+		cable.ContentMake(ce);
 	}
 	
 	public void cable252(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		System.out.println(252);
+		CertificateEntity ce = new CertificateEntity();
+		ce.setTable_id_extension(String2Int(request.getParameter("table_id_extension")));
+		ce.setVersion_number(String2Int(request.getParameter("version_number")));
+		ce.setCurrent_next_indicator(String2Int(request.getParameter("current_next_indicator")));
+		ce.setSection_number(String2Int(request.getParameter("section_number")));
+		ce.setLast_section_number(String2Int(request.getParameter("last_section_number")));
+		ce.setCertAuth_number(String2Int(request.getParameter("CertAuth_number")));
+		ce.setCertAuth_data(request.getParameterValues("CertAuth_data"));
+		ce.setCert_number(String2Int(request.getParameter("cert_number")));
+		ce.setCert_data(request.getParameterValues("cert_data"));
+		
+		int[] certAuth_length = new int[ce.getCertAuth_number()];
+		for(int i=0;i<ce.getCertAuth_number();i++){
+			certAuth_length[i] = ce.getCertAuth_data()[i].length();
+		}
+		ce.setCertAuth_length(certAuth_length);
+		
+		int[] cert_length = new int[ce.getCert_number()];
+		for(int i=0;i<ce.getCert_number();i++){
+			cert_length[i] = ce.getCert_data()[i].length();
+		}
+		ce.setCert_length(cert_length);
+		
+		int section_length = 77;
+		for(int i=0;i<ce.getCertAuth_number();i++){
+			section_length += 2+ce.getCertAuth_length()[i];
+		}
+		for(int i=0;i<ce.getCert_number();i++){
+			section_length += 1+ce.getCert_length()[i];
+		}
+		ce.setSection_length(section_length);
+		ce.setSignature_length(64);
+		ce.setSignature_data("0000000000000000000000000000000000000000000000000000000000000000");
+		ce.setCRC_32(1234);
+		System.out.println(ce.toString());
+		Cable cable = new Cable();
+		cable.CertificateMake(ce);
 	}
 	
 	public void cable251(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
