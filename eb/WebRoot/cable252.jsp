@@ -36,7 +36,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   <div id="b">
   
   	<h2>有线数字电视应急广播证书授权列表</h2><br/><br/>
-    <form action="/eb/TransmissionServlet"  method="post" onsubmit="return check_submit();">
+    <form action="/eb/CableServlet"  method="post" onsubmit="return check_submit();">
     	<input type = "hidden"  name = "transType" value="3"/> 	
     	<input type = "hidden"  name = "cableType" value="252"/>
     	

@@ -1,5 +1,7 @@
 package transmissionEntity;
 
+import java.util.Arrays;
+
 public class ConfigureEntity {
 
 	private int table_id;
@@ -13,7 +15,7 @@ public class ConfigureEntity {
 	private int section_number;
 	private int last_section_number;
 	private int configure_cmd_number;
-	ConfigureCommandEntity[] cce ;
+	private ConfigureCommandEntity[] cce ;
 	private int signature_length;
 	private String signature_data;
 	private int CRC_32;
@@ -112,6 +114,16 @@ public class ConfigureEntity {
 	}
 	public void setCRC_32(int cRC_32) {
 		CRC_32 = cRC_32;
+	}
+	@Override
+	public String toString() {
+		return "ConfigureEntity [table_id=" + table_id + ", section_syntax_indicator=" + section_syntax_indicator
+				+ ", reserved=" + reserved + ", section_length=" + section_length + ", table_id_extension="
+				+ table_id_extension + ", reserved2=" + reserved2 + ", version_number=" + version_number
+				+ ", current_next_indicator=" + current_next_indicator + ", section_number=" + section_number
+				+ ", last_section_number=" + last_section_number + ", configure_cmd_number=" + configure_cmd_number
+				+ ", cce=" + Arrays.toString(cce) + ", signature_length=" + signature_length + ", signature_data="
+				+ signature_data + ", CRC_32=" + CRC_32 + "]";
 	}
 	
 }

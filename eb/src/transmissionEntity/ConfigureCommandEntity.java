@@ -1,5 +1,7 @@
 package transmissionEntity;
 
+import java.util.Arrays;
+
 public class ConfigureCommandEntity {
 
 	private int  configure_cmd_tag;
@@ -49,7 +51,7 @@ public class ConfigureCommandEntity {
 	
 	//07状态/参数查询指令
 	private int parameter_number;
-	private int[] parameter_tag = new int[10];
+	private int[] parameter_tag;
 	private int terminal_number7;
 	private int reserved7;
 	private String[] resource_code7;
@@ -288,6 +290,25 @@ public class ConfigureCommandEntity {
 	}
 	public void setResource_code7(String[] resource_code7) {
 		this.resource_code7 = resource_code7;
+	}
+	@Override
+	public String toString() {
+		return "ConfigureCommandEntity [configure_cmd_tag=" + configure_cmd_tag + ", configure_cmd_length="
+				+ configure_cmd_length + ", wYear=" + wYear + ", iMonth=" + iMonth + ", iDay=" + iDay + ", iHour="
+				+ iHour + ", iMinute=" + iMinute + ", iSecond=" + iSecond + ", terminal_address_length="
+				+ terminal_address_length + ", terminal_address=" + terminal_address + ", reserved2=" + reserved2
+				+ ", resource_code=" + resource_code + ", freq=" + freq + ", symbolrate=" + symbolrate
+				+ ", constellation_mapping=" + constellation_mapping + ", terminal_number=" + terminal_number
+				+ ", reserved3=" + reserved3 + ", resource_address=" + Arrays.toString(resource_address)
+				+ ", reback_type=" + reback_type + ", reback_address_length=" + reback_address_length
+				+ ", reback_address=" + reback_address + ", terminal_number4=" + terminal_number4 + ", reserved4="
+				+ reserved4 + ", resource_code4=" + Arrays.toString(resource_code4) + ", reback_period=" + reback_period
+				+ ", terminal_number5=" + terminal_number5 + ", reserved5=" + reserved5 + ", resource_code5="
+				+ Arrays.toString(resource_code5) + ", volume=" + volume + ", terminal_number6=" + terminal_number6
+				+ ", reserved6=" + reserved6 + ", resource_code6=" + Arrays.toString(resource_code6)
+				+ ", parameter_number=" + parameter_number + ", parameter_tag=" + Arrays.toString(parameter_tag)
+				+ ", terminal_number7=" + terminal_number7 + ", reserved7=" + reserved7 + ", resource_code7="
+				+ Arrays.toString(resource_code7) + "]";
 	}
 	
 	

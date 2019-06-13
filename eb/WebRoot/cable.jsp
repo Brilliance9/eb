@@ -36,7 +36,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   <div id="b">
   
   	<h2>有线数字电视</h2><br/><br/>
-    <form action="/eb/TransmissionServlet"  method="get" onsubmit="return check_submit();">
+    <form action="/eb/CableServlet"  method="get" onsubmit="return check_submit();">
     	表类型：
     	<select name="type" class="a" >
 			<option value="253">应急广播索引表</option>

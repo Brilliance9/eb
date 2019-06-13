@@ -809,6 +809,13 @@ standard deployment descriptor.
     <description>This is the description of my J2EE component</description>
     <servlet-class>servlet.TransmissionServlet</servlet-class>
   </servlet>
+  <servlet>
+    <servlet-name>CableServlet</servlet-name>
+    <display-name>This is the display name of my J2EE component</display-name>
+    <description>This is the description of my J2EE component</description>
+    <servlet-class>servlet.CableServlet</servlet-class>
+  </servlet>
+
 
 
 
@@ -836,5 +843,9 @@ standard deployment descriptor.
   <servlet-mapping>
     <servlet-name>TransmissionServlet</servlet-name>
     <url-pattern>/TransmissionServlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>CableServlet</servlet-name>
+    <url-pattern>/CableServlet</url-pattern>
   </servlet-mapping>
 </web-app>

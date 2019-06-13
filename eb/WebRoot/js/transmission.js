@@ -251,3 +251,107 @@ function certFun(id){
 	}
 	document.getElementById("cert").innerHTML=text;
 }
+//cable251.jsp
+function configureNumber(){
+	document.getElementById('configureExample').style.display = 'none';
+	text='';
+	for(var i=0;i<document.getElementById("configure_cmd_number").value;i++){
+		text +=document.getElementById("configureExample").innerHTML;
+	}
+	document.getElementById("configure").innerHTML=text;
+}
+function configureTag(configure_cmd_tag){
+	
+	var divs = configure_cmd_tag.parentNode.parentNode.children;
+	for(var i=1;i<divs.length;i++){
+		divs[i].style.display = 'none';
+	}
+	switch(configure_cmd_tag.value){
+	case "1":
+		divs[1].style.display = 'block';
+		break;
+	case "2":
+		divs[2].style.display = 'block';
+		break;
+	case "3":
+		divs[3].style.display = 'block';
+		break;
+	case "4":
+		divs[4].style.display = 'block';
+		break;
+	case "5":
+		divs[5].style.display = 'block';
+		break;
+	case "6":
+		divs[6].style.display = 'block';
+		break;
+	case "7":
+		divs[7].style.display = 'block';
+		break;
+	}
+}
+function terminalNumber(doc){
+	var text='资源编码个数：'
+	    	+'<input type="text" class="a" value ="'+doc.value+'" name="terminal_number" id="terminal_number" oninput="terminalNumber(this);"/><br/><br/>';
+	for(var i=0;i<doc.value;i++){
+		text+='资源编码：'
+			+'<input type="text" class="a"  name="resource_address" /><br/><br/>';
+	}
+	doc.parentElement.innerHTML=text;
+}
+function terminalNumber4(doc){
+	var text='终端资源编码个数：'
+		+'<input type="text" class="a" value ="'+doc.value+'" name="terminal_number4" id="terminal_number4" oninput="terminalNumber4(this);"/><br/><br/>';
+	for(var i=0;i<doc.value;i++){
+		text+='终端资源编码：'
+			+'<input type="text" class="a"  name="resource_address4" /><br/><br/>';
+	}
+	doc.parentElement.innerHTML=text;
+}
+function terminalNumber5(doc){
+	var text='终端资源编码个数：'
+	    	+'<input type="text" class="a"  value ="'+doc.value+'" name="terminal_number5" id="terminal_number5" oninput="terminalNumber5(this);"/><br/><br/>';
+	for(var i=0;i<doc.value;i++){
+		text+='终端资源编码：'
+			+'<input type="text" class="a"  name="resource_address5" /><br/><br/>';
+	}
+	doc.parentElement.innerHTML=text;
+}
+function terminalNumber6(doc){
+	var text='终端资源编码个数：'
+		+'<input type="text" class="a"  value ="'+doc.value+'" name="terminal_number6" id="terminal_number6" oninput="terminalNumber6(this);"/><br/><br/>';
+	for(var i=0;i<doc.value;i++){
+		text+='终端资源编码：'
+			+'<input type="text" class="a"  name="resource_address6" /><br/><br/>';
+	}
+	doc.parentElement.innerHTML=text;
+}
+function parameterNumber(doc){	
+	var text = '状态/参数个数：'
+		+'<input type="text" class="a" value ="'+doc.value+'" name="parameter_number" id="parameter_number" oninput="parameterNumber(this);"/><br/><br/>';
+	for(var i=0;i<doc.value;i++){
+		text += '参数标识'+(i+1)+'：'
+    		+'<select name="parameter_tag" class="a">'
+				+'<option value="1">终端音量</option>'
+				+'<option value="2">本地地址</option>'
+				+'<option value="3">回传地址</option>'
+				+'<option value="4">终端资源编码</option>'
+				+'<option value="5">物理地址编码</option>'
+				+'<option value="6">工作状态</option>'
+				+'<option value="7">故障代码</option>'
+				+'<option value="8">设备类型</option>'
+				+'<option value="9">硬件版本号</option>'
+				+'<option value="10">软件版本号</option>'
+				+'</select><br/><br/>';
+	}
+	doc.parentElement.innerHTML=text;
+}
+function terminalNumber7(doc){
+	var text='终端资源编码个数：'
+		+'<input type="text" class="a" value ="'+doc.value+'" name="terminal_number7" id="terminal_number7" oninput="terminalNumber7(this);"/><br/><br/>';
+	for(var i=0;i<doc.value;i++){
+		text+='终端资源编码：'
+			+'<input type="text" class="a"  name="resource_address7" /><br/><br/>';
+	}
+	doc.parentElement.innerHTML=text;
+}
