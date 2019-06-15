@@ -1,6 +1,7 @@
 package transmission;
 
 import transmissionEntity.Descriptor1;
+import transmissionEntity.Descriptor2;
 import transmissionEntity.Program;
 
 public class DescriptorMake {
@@ -14,6 +15,24 @@ public class DescriptorMake {
 		enc.encInt(des.getModulation(), 8);
 		enc.DoubleEnc(enc, des.getSymbol_rate(), 3, 4);
 		enc.encInt(des.getFEC_inner(), 4);
+		Program pro = des.getProgram();
+		
+		ProgramMake(enc,pro);
+	}
+	public void TerrestrialDescriptorMake(Encapsulate enc,Descriptor2 des){
+		enc.encInt(des.getDescriptor_tag(), 8);
+		enc.encInt(des.getDescriptor_length(), 8);
+		enc.DoubleEnc(enc, des.getCentre_frequency(),4, 4);
+		enc.encInt(des.getFEC(), 4);
+		enc.encInt(des.getModulation(), 4);
+		enc.encInt(des.getNumber_of_subcarrier(), 4);
+		enc.encInt(des.getFrame_header_mode(), 4);
+		enc.encInt(des.getInterleaving_mode(), 4);
+		enc.encInt(des.getOther_frequency_flag(), 1);
+		enc.encInt(des.getSfn_mfn_flag(), 1);
+		for(int i=0;i<17;i++){
+			enc.encInt(des.getReserved_future_use(), 2);
+		}
 		Program pro = des.getProgram();
 		
 		ProgramMake(enc,pro);

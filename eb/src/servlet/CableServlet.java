@@ -12,7 +12,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import transmission.Cable;
+import transmission.DigitalTelevision;
 import transmissionEntity.Auxiliary_dataEntity;
 import transmissionEntity.CertificateEntity;
 import transmissionEntity.ConfigureCommandEntity;
@@ -20,7 +20,7 @@ import transmissionEntity.ConfigureEntity;
 import transmissionEntity.ContentEntity;
 import transmissionEntity.Descriptor1;
 import transmissionEntity.EBMEntity;
-import transmissionEntity.IndexEntity;
+import transmissionEntity.CableIndexEntity;
 import transmissionEntity.Multilingual_contentEntity;
 import transmissionEntity.Program;
 import transmissionEntity.StreamEntity;
@@ -105,7 +105,7 @@ public class CableServlet extends HttpServlet {
 		}
 		int type = String2Int(request.getParameter("cableType"));
 		
-//		try{
+		try{
 			switch(type){
 			case 253:try {
 					cable253(request,response);
@@ -123,18 +123,18 @@ public class CableServlet extends HttpServlet {
 			default:;
 			
 			}
-//		}catch(Exception e){
-//			request.setAttribute("msg","传输失败，请检查数据填写格式是否正确");
-//			request.getRequestDispatcher("/msg.jsp").forward(request, response);
-//			return;
-//		}
+		}catch(Exception e){
+			request.setAttribute("msg","传输失败，请检查数据填写格式是否正确");
+			request.getRequestDispatcher("/msg.jsp").forward(request, response);
+			return;
+		}
 		request.setAttribute("msg","传输成功");
 		request.getRequestDispatcher("/msg.jsp").forward(request, response);
 		
 	}
 	public void cable253(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException, ParseException {
 		System.out.println(253);
-		IndexEntity ie = new IndexEntity();
+		CableIndexEntity ie = new CableIndexEntity();
 		EBMEntity[] ebm = new EBMEntity[1];
 		for(int i=0;i<ebm.length;i++){
 			ebm[i]=new EBMEntity();
@@ -192,6 +192,7 @@ public class CableServlet extends HttpServlet {
 		ebm[0].setDetails_channel_PCR_PID(String2Int(request.getParameter("details_channel_PCR_PID")));
 		//details_channel_program_info_length
 		
+		ebm[0].setDes_flag(1);
 		//descriptor_length
 		des1.setFrequency(String2Double(request.getParameter("frequency")));
 		des1.setFEC_outer(String2Int(request.getParameter("FEC_outer")));
@@ -491,7 +492,7 @@ public class CableServlet extends HttpServlet {
 		ebm[0].setDescriptor1(des1);
 		ebm[0].setStream(se);
 		ie.setEBM(ebm);
-		Cable cable = new Cable();
+		DigitalTelevision cable = new DigitalTelevision();
 		cable.IndexMake(ie);
 	}
 	
@@ -566,12 +567,12 @@ public class CableServlet extends HttpServlet {
 			int multilingual_content_length=0;
 			multilingual_content_length = 8+message_text_length[i]+agency_name_length[i];
 			for(int k=0;k<me[i].getAuxiliary_data().length;k++){
-				multilingual_content_length += 3+me[i].getAuxiliary_data()[k].getAuxiliary_data_length();
+				multilingual_content_length += 4+me[i].getAuxiliary_data()[k].getAuxiliary_data_length();
 			}
 			me[i].setMultilingual_content_length(multilingual_content_length);
 		}
 		ce.setMultilingual_content(me);
-		int section_length=24;
+		int section_length=94;
 		for(int i=0;i<ce.getMultilingual_content_number();i++){
 			section_length += 4+ce.getMultilingual_content()[i].getMultilingual_content_length();
 		}
@@ -582,7 +583,7 @@ public class CableServlet extends HttpServlet {
 		ce.setCRC_32(1234);
 		System.out.println(ce.toString());
 		
-		Cable cable = new Cable();
+		DigitalTelevision cable = new DigitalTelevision();
 		cable.ContentMake(ce);
 	}
 	
@@ -622,7 +623,7 @@ public class CableServlet extends HttpServlet {
 		ce.setSignature_data("0000000000000000000000000000000000000000000000000000000000000000");
 		ce.setCRC_32(1234);
 		System.out.println(ce.toString());
-		Cable cable = new Cable();
+		DigitalTelevision cable = new DigitalTelevision();
 		cable.CertificateMake(ce);
 	}
 	
@@ -639,8 +640,6 @@ public class CableServlet extends HttpServlet {
 		ce.setConfigure_cmd_number(configure_cmd_number);
 
 		int[] configure_cmd_tag = String2Ints(request.getParameterValues("configure_cmd_tag"));
-		
-		
 
 		String[] time = request.getParameterValues("time");
 		String[] wYear = new String[time.length];
@@ -688,8 +687,8 @@ public class CableServlet extends HttpServlet {
 		String[] reback_address = request.getParameterValues("reback_address");
 		String[] terminal_number4 = request.getParameterValues("terminal_number4");
 		String[] resource_address4 = request.getParameterValues("resource_address4");
-		int[] reback_address_length = new int[reback_address .length];
-		for(int i=9;i<reback_address.length;i++){
+		int[] reback_address_length = new int[reback_address.length];
+		for(int i=0;i<reback_address.length;i++){
 			reback_address_length[i] = reback_address [i].length();
 		}
 //		String[]  = request.getParameterValues("");
@@ -707,9 +706,10 @@ public class CableServlet extends HttpServlet {
 		String[] terminal_number7 = request.getParameterValues("terminal_number7");
 		String[] resource_address7 = request.getParameterValues("resource_address7");
 		
-
-		ConfigureCommandEntity[] cce = new ConfigureCommandEntity[configure_cmd_number-1];
-		
+		ConfigureCommandEntity[] cce = new ConfigureCommandEntity[configure_cmd_number];
+		for(int i=0;i<cce.length;i++){
+			cce[i] = new ConfigureCommandEntity();
+		}
 		int resource_addressCount = 0;
 		int resource_address4Count = 0;
 		int resource_address5Count = 0;
@@ -718,61 +718,146 @@ public class CableServlet extends HttpServlet {
 		int parameter_tagCount = 0;
 //		cce[i].set(String2Int([i]));
 //		cce[i].set([i]);
-		for(int i=0;i<configure_cmd_number-1;i++){
-			cce[i].setwYear(String2Int(wYear[i]));
-			cce[i].setiMonth(String2Int(iMonth[i]));
-			cce[i].setiDay(String2Int(iDay[i]));
-			cce[i].setiHour(String2Int(iHour[i]));
-			cce[i].setiMinute(String2Int(iMinute[i]));
-			cce[i].setiSecond(String2Int(iSecond[i]));
-			//2
-			cce[i].setTerminal_address_length(terminal_address_length[i]);
-			cce[i].setTerminal_address(terminal_address[i]);
-			cce[i].setResource_code(resource_code[i]);
-			//3
-			cce[i].setFreq(String2Int(freq[i]));
-			cce[i].setSymbolrate(String2Int(symbolrate[i]));
-			cce[i].setConstellation_mapping(String2Int(constellation_mapping[i]));
-			cce[i].setTerminal_number(String2Int(terminal_number[i]));
-			String[] Terminal3 = new String[cce[i].getTerminal_number()];
-			for(int j=0;j<Terminal3.length;j++){
-				Terminal3[i] = resource_address[resource_addressCount];
-				resource_addressCount++;
+		for(int i=0;i<configure_cmd_number;i++){
+			cce[i].setConfigure_cmd_tag(configure_cmd_tag[i]);
+			switch(configure_cmd_tag[i]){
+				case 1:
+					cce[i].setwYear(String2Int(wYear[i]));
+					cce[i].setiMonth(String2Int(iMonth[i]));
+					cce[i].setiDay(String2Int(iDay[i]));
+					cce[i].setiHour(String2Int(iHour[i]));
+					cce[i].setiMinute(String2Int(iMinute[i]));
+					cce[i].setiSecond(String2Int(iSecond[i]));
+					cce[i].setConfigure_cmd_length(7);
+					resource_addressCount++;
+					resource_address4Count++;
+					resource_address5Count++;
+					resource_address6Count++;
+					resource_address7Count++;
+					parameter_tagCount++;
+					break;
+				case 2:
+					//2
+					cce[i].setTerminal_address_length(terminal_address_length[i]);
+					cce[i].setTerminal_address(terminal_address[i]);
+					cce[i].setResource_code(resource_code[i]);
+					cce[i].setConfigure_cmd_length(13+terminal_address_length[i]);
+					resource_addressCount++;
+					resource_address4Count++;
+					resource_address5Count++;
+					resource_address6Count++;
+					resource_address7Count++;
+					parameter_tagCount++;
+					break;
+				case 3:
+					//3
+					cce[i].setFreq(String2Int(freq[i]));
+					cce[i].setSymbolrate(String2Int(symbolrate[i]));
+					cce[i].setConstellation_mapping(String2Int(constellation_mapping[i]));
+					cce[i].setTerminal_number(String2Int(terminal_number[i]));
+					String[] Terminal3 = new String[cce[i].getTerminal_number()];
+					for(int j=0;j<Terminal3.length;j++){
+						Terminal3[j] = resource_address[resource_addressCount];
+						resource_addressCount++;
+					}
+					cce[i].setResource_address(Terminal3);
+					cce[i].setConfigure_cmd_length(10+12*String2Int(terminal_number[i]));
+					resource_address4Count++;
+					resource_address5Count++;
+					resource_address6Count++;
+					resource_address7Count++;
+					parameter_tagCount++;
+					break;
+				case 4:
+					//4
+					cce[i].setReback_type(String2Int(reback_type[i]));
+					cce[i].setReback_address_length(reback_address_length[i]);
+					cce[i].setReback_address(reback_address[i]);
+					cce[i].setTerminal_number4(String2Int(terminal_number4[i]));
+					String[] Terminal4 = new String[cce[i].getTerminal_number4()];
+					for(int j=0;j<Terminal4.length;j++){
+						Terminal4[j] = resource_address4[resource_address4Count];
+						resource_address4Count++;
+					}
+					cce[i].setResource_code4(Terminal4);
+					cce[i].setConfigure_cmd_length(3+cce[i].getReback_address_length()+12*cce[i].getTerminal_number4());
+					resource_addressCount++;
+					resource_address5Count++;
+					resource_address6Count++;
+					resource_address7Count++;
+					parameter_tagCount++;
+					break;
+				case 5:
+					//5
+					cce[i].setReback_period(String2Int(reback_period[i]));
+					cce[i].setTerminal_number5(String2Int(terminal_number5[i]));
+					String[] Terminal5 = new String[cce[i].getTerminal_number5()];
+					for(int j=0;j<Terminal5.length;j++){
+						Terminal5[j] = resource_address5[resource_address5Count];
+						resource_address5Count++;
+					}
+					cce[i].setResource_code5(Terminal5);
+					cce[i].setConfigure_cmd_length(5+12*cce[i].getTerminal_number5());
+					resource_addressCount++;
+					resource_address4Count++;
+					resource_address6Count++;
+					resource_address7Count++;
+					parameter_tagCount++;
+					break;
+				case 6:
+					//6
+					cce[i].setVolume(String2Int(volume[i]));
+					cce[i].setTerminal_number6(String2Int(terminal_number6[i]));
+					String[] Terminal6 = new String[cce[i].getTerminal_number6()];
+					for(int j=0;j<Terminal6.length;j++){
+						Terminal6[j] = resource_address6[resource_address6Count];
+						resource_address6Count++;
+					}
+					cce[i].setResource_code6(Terminal6);
+					cce[i].setConfigure_cmd_length(2+12*cce[i].getTerminal_number6());
+					resource_addressCount++;
+					resource_address4Count++;
+					resource_address5Count++;
+					resource_address7Count++;
+					parameter_tagCount++;
+					break;
+				case 7:
+					//7
+					cce[i].setParameter_number(String2Int(parameter_number[i]));
+					String[] Parameter = new String[cce[i].getParameter_number()];
+					for(int j=0;j<Parameter.length;j++){
+						Parameter[j] = parameter_tag[parameter_tagCount];
+						parameter_tagCount++;
+					}
+					cce[i].setParameter_tag(String2Ints(Parameter));
+					cce[i].setTerminal_number7(String2Int(terminal_number7[i]));
+					String[] Terminal7 = new String[cce[i].getTerminal_number7()];
+					for(int j=0;j<Terminal7.length;j++){
+						Terminal7[j] = resource_address7[resource_address7Count];
+						resource_address7Count++;
+					}
+					cce[i].setResource_code7(Terminal7);
+					cce[i].setConfigure_cmd_length(2+cce[i].getParameter_number()+12*cce[i].getTerminal_number7());
+					resource_addressCount++;
+					resource_address4Count++;
+					resource_address5Count++;
+					resource_address6Count++;
+					break;
+				default:;
 			}
-			cce[i].setResource_address(Terminal3);
-			//4
-			cce[i].setReback_type(String2Int(reback_type[i]));
-			cce[i].setReback_address_length(reback_address_length[i]);
-			cce[i].setReback_address(reback_address[i]);
-			cce[i].setTerminal_number4(String2Int(terminal_number4[i]));
-			String[] Terminal4 = new String[cce[i].getTerminal_number4()];
-			for(int j=0;j<Terminal4.length;j++){
-				Terminal4[i] = resource_address4[resource_address4Count];
-				resource_address4Count++;
-			}
-			cce[i].setResource_code4(Terminal4);
-			//5
-			cce[i].setReback_period(String2Int(reback_period[i]));
-			cce[i].setTerminal_number5(String2Int(terminal_number5[i]));
-			String[] Terminal5 = new String[cce[i].getTerminal_number5()];
-			for(int j=0;j<Terminal5.length;j++){
-				Terminal5[i] = resource_address5[resource_address5Count];
-				resource_address5Count++;
-			}
-			cce[i].setResource_code5(Terminal5);
-			//6
-			cce[i].setVolume(String2Int(volume[i]));
-			cce[i].setTerminal_number6(String2Int(terminal_number6[i]));
-			String[] Terminal6 = new String[cce[i].getTerminal_number6()];
-			for(int j=0;j<Terminal6.length;j++){
-				Terminal6[i] = resource_address6[resource_address6Count];
-				resource_address6Count++;
-			}
-			cce[i].setResource_code6(Terminal6);
-			//7
-			cce[i].setParameter_number(String2Int(parameter_number[i]));
-			
 		}
+		ce.setCce(cce);
+		int Section_length=76;
+		for(int i=0;i<ce.getConfigure_cmd_number();i++){
+			Section_length += 3+ce.getCce()[i].getConfigure_cmd_length();
+		}
+		ce.setSection_length(Section_length);
+		ce.setSignature_length(64);
+		ce.setSignature_data("0000000000000000000000000000000000000000000000000000000000000000");
+		ce.setCRC_32(1234);
+		DigitalTelevision cable = new DigitalTelevision();
+		cable.ConfigureMake(ce);
+		System.out.println(ce.toString());
 	}
 
 }

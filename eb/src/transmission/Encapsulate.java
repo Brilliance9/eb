@@ -162,9 +162,9 @@ public class Encapsulate {
 	public void printmsg(){
 		System.out.println("countbyte:"+countbyte);
 		System.out.println("countbit:"+countbit);
-		for(int i=0;i<countbyte;i++){
-			System.out.println(i+":"+Integer.toBinaryString(message[i]));
-		}
+//		for(int i=0;i<countbyte;i++){
+//			System.out.println(i+":"+Integer.toBinaryString(message[i]));
+//		}
 	}
 	/**
 	 * @param s 

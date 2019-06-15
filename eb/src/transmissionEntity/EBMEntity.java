@@ -1,5 +1,6 @@
 package transmissionEntity;
 
+import java.util.Arrays;
 import java.util.Calendar;
 
 public class EBMEntity {
@@ -24,7 +25,10 @@ public class EBMEntity {
 	private int details_channel_PCR_PID;
 	private int reserved5;
 	private int details_channel_program_info_length;
+	//描述符标志，1是有线数字电视，2是地面数字电视
+	private int des_flag;
 	private Descriptor1 descriptor1;
+	private Descriptor2 descriptor2;
 	private int stream_info_length;
 	private StreamEntity[] stream;
 	
@@ -182,6 +186,39 @@ public class EBMEntity {
 	}
 	public void setStream(StreamEntity[] stream) {
 		this.stream = stream;
+	}
+
+	public int getDes_flag() {
+		return des_flag;
+	}
+
+	public void setDes_flag(int des_flag) {
+		this.des_flag = des_flag;
+	}
+
+	public Descriptor2 getDescriptor2() {
+		return descriptor2;
+	}
+
+	public void setDescriptor2(Descriptor2 descriptor2) {
+		this.descriptor2 = descriptor2;
+	}
+
+	@Override
+	public String toString() {
+		return "EBMEntity [EBM_length=" + EBM_length + ", reserved1=" + reserved1 + ", EBM_id=" + EBM_id
+				+ ", EBM_original_network_id=" + EBM_original_network_id + ", EBM_start_time=" + EBM_start_time
+				+ ", EBM_end_time=" + EBM_end_time + ", EBM_type=" + EBM_type + ", EBM_class=" + EBM_class
+				+ ", EBM_level=" + EBM_level + ", EBM_resource_number=" + EBM_resource_number + ", reserved2="
+				+ reserved2 + ", EBM_resource_code=" + Arrays.toString(EBM_resource_code) + ", reserved3=" + reserved3
+				+ ", details_channel_indicate=" + details_channel_indicate + ", details_channel_network_id="
+				+ details_channel_network_id + ", details_channel_transport_stream_id="
+				+ details_channel_transport_stream_id + ", details_channel_program_number="
+				+ details_channel_program_number + ", reserved4=" + reserved4 + ", details_channel_PCR_PID="
+				+ details_channel_PCR_PID + ", reserved5=" + reserved5 + ", details_channel_program_info_length="
+				+ details_channel_program_info_length + ", des_flag=" + des_flag + ", descriptor1=" + descriptor1
+				+ ", descriptor2=" + descriptor2 + ", stream_info_length=" + stream_info_length + ", stream="
+				+ Arrays.toString(stream) + "]";
 	}
 
 

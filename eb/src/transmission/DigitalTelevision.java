@@ -9,11 +9,11 @@ import transmission.Encapsulate;
 import transmission.TransTool;
 import transmissionEntity.*;
 
-public class Cable {
+public class DigitalTelevision {
 	Encapsulate enc = new Encapsulate();
 	TransTool tool = new TransTool();
 	
-	public void IndexMake(IndexEntity ie){
+	public void IndexMake(CableIndexEntity ie){
 		enc.encInt(ie.getTable_id(), 8);
 		enc.encInt(ie.getSection_syntax_indicator(), 1);
 		enc.encInt(1, 1);
@@ -62,9 +62,17 @@ public class Cable {
 				
 				
 				//描述符1
-				Descriptor1 des = item.getDescriptor1();
+				int flag = item.getDes_flag();
 				DescriptorMake dm = new DescriptorMake();
-				dm.CableDescriptorMake(enc, des);
+				if( flag == 1){//有线
+					Descriptor1 des1 = item.getDescriptor1();
+					
+					dm.CableDescriptorMake(enc, des1);
+				}else{//地面
+					Descriptor2 des2 = item.getDescriptor2();
+					dm.TerrestrialDescriptorMake(enc, des2);
+				}
+				
 				
 				//
 				
@@ -127,7 +135,7 @@ public class Cable {
 			Auxiliary_dataEntity[] ad= item.getAuxiliary_data();
 			for(int j=0;j<item.getAuxiliary_data_number();j++){
 				enc.encInt(ad[j].getAuxiliary_data_type(), 8);
-				enc.encInt(ad[j].getAuxiliary_data_length(), 32);
+				enc.encInt(ad[j].getAuxiliary_data_length(), 24);
 				enc.ASCIIEnc(enc, ad[j].getAuxiliary_data());
 			}
 		}
@@ -344,7 +352,7 @@ public class Cable {
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 //		IndexEntity ie = new IndexEntity();
-		Cable cc = new Cable();
+		DigitalTelevision cc = new DigitalTelevision();
 //		cc.IndexMake(ie);
 		
 

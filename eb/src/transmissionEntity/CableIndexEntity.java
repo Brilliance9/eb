@@ -1,6 +1,6 @@
 package transmissionEntity;
 
-public class IndexEntity {
+public class CableIndexEntity {
 	private int table_id;
 	private int section_syntax_indicator;
 	private int reserved;
@@ -17,7 +17,7 @@ public class IndexEntity {
 	private String signature_data;
 	private int CRC_32;
 	
-	public IndexEntity(){
+	public CableIndexEntity(){
 		this.table_id=253;
 		this.section_syntax_indicator=1;
 		this.reserved=3;

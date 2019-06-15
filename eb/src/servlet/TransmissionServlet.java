@@ -13,7 +13,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import transmission.AnalogFM;
-import transmission.Cable;
+import transmission.DigitalTelevision;
 import transmission.Medium;
 import transmissionEntity.AnalogFMEntity;
 import transmissionEntity.Auxiliary_dataEntity;
@@ -22,7 +22,7 @@ import transmissionEntity.ConfigureEntity;
 import transmissionEntity.ContentEntity;
 import transmissionEntity.Descriptor1;
 import transmissionEntity.EBMEntity;
-import transmissionEntity.IndexEntity;
+import transmissionEntity.CableIndexEntity;
 import transmissionEntity.MediumEntity;
 import transmissionEntity.Multilingual_contentEntity;
 import transmissionEntity.Program;

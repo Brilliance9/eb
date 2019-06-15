@@ -16,20 +16,22 @@ public class Test {
 		return ints;	
 	}
 	public static void main(String[] args) {
-		String time="2019-01-02T03:04";
-		String[] str=time.split("-");
-		String year = str[0];
-		String month = str[1];
-		String[] s = str[2].split("T");
-		String day = s[0];
-		String[] ss = s[1].split(":");
-		String hour = ss[0];
-		String minute = ss[1];
-		System.out.println(year);
-		System.out.println(month);
-		System.out.println(day);
-		System.out.println(hour);
-		System.out.println(minute);
+		int tt = 1;
+		switch(tt){
+		case 1:
+			System.out.println(11);
+			System.out.println(12);
+			break;
+		case 2:
+			System.out.println(21);
+			System.out.println(22);
+			break;
+		case 3:
+			System.out.println(31);
+			System.out.println(32);
+			break;
+			default:;
+		}
 
 	}
 
