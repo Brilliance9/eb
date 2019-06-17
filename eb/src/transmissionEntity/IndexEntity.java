@@ -1,6 +1,8 @@
 package transmissionEntity;
 
-public class CableIndexEntity {
+import java.util.Arrays;
+
+public class IndexEntity {
 	private int table_id;
 	private int section_syntax_indicator;
 	private int reserved;
@@ -17,7 +19,7 @@ public class CableIndexEntity {
 	private String signature_data;
 	private int CRC_32;
 	
-	public CableIndexEntity(){
+	public IndexEntity(){
 		this.table_id=253;
 		this.section_syntax_indicator=1;
 		this.reserved=3;
@@ -142,6 +144,17 @@ public class CableIndexEntity {
 
 	public void setEBM_number(int eBM_number) {
 		EBM_number = eBM_number;
+	}
+
+	@Override
+	public String toString() {
+		return "CableIndexEntity [table_id=" + table_id + ", section_syntax_indicator=" + section_syntax_indicator
+				+ ", reserved=" + reserved + ", section_length=" + section_length + ", table_id_extension="
+				+ table_id_extension + ", reserved2=" + reserved2 + ", version_number=" + version_number
+				+ ", current_next_indicator=" + current_next_indicator + ", section_number=" + section_number
+				+ ", last_section_number=" + last_section_number + ", EBM_number=" + EBM_number + ", EBM="
+				+ Arrays.toString(EBM) + ", signature_length=" + signature_length + ", signature_data=" + signature_data
+				+ ", CRC_32=" + CRC_32 + "]";
 	}
 
 	

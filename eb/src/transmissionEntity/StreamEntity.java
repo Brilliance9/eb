@@ -7,7 +7,7 @@ public class StreamEntity {
 	private int elementary_PID;
 	private int reserved2;
 	private int ES_info_length;
-	private Program descrpitor2;
+	private Program program2;
 	
 	public StreamEntity(){
 		this.reserved1=7;
@@ -43,11 +43,17 @@ public class StreamEntity {
 	public void setES_info_length(int eS_info_length) {
 		ES_info_length = eS_info_length;
 	}
-	public Program getDescrpitor2() {
-		return descrpitor2;
+	public Program getProgram2() {
+		return program2;
 	}
-	public void setDescrpitor2(Program descrpitor2) {
-		this.descrpitor2 = descrpitor2;
+	public void setProgram2(Program program2) {
+		this.program2 = program2;
+	}
+	@Override
+	public String toString() {
+		return "StreamEntity [stream_type=" + stream_type + ", reserved1=" + reserved1 + ", elementary_PID="
+				+ elementary_PID + ", reserved2=" + reserved2 + ", ES_info_length=" + ES_info_length + ", program2="
+				+ program2 + "]";
 	}
 	
 }

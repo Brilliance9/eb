@@ -14,18 +14,19 @@ import javax.servlet.http.HttpServletResponse;
 
 import transmission.DigitalTelevision;
 import transmissionEntity.Auxiliary_dataEntity;
+import transmissionEntity.IndexEntity;
 import transmissionEntity.CertificateEntity;
 import transmissionEntity.ConfigureCommandEntity;
 import transmissionEntity.ConfigureEntity;
 import transmissionEntity.ContentEntity;
 import transmissionEntity.Descriptor1;
+import transmissionEntity.Descriptor2;
 import transmissionEntity.EBMEntity;
-import transmissionEntity.CableIndexEntity;
 import transmissionEntity.Multilingual_contentEntity;
 import transmissionEntity.Program;
 import transmissionEntity.StreamEntity;
 
-public class CableServlet extends HttpServlet {
+public class DigitalTelServlet extends HttpServlet {
 
 	//
 	public int String2Int(String str){
@@ -78,16 +79,44 @@ public class CableServlet extends HttpServlet {
 	}
 	public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
+		
+		int transType =Integer.parseInt(request.getParameter("transType"));
 		int type =Integer.parseInt(request.getParameter("type"));
-		if(type == 251){
-			request.getRequestDispatcher("/cable251.jsp").forward(request, response);
-		}else if(type == 252){
-			request.getRequestDispatcher("/cable252.jsp").forward(request, response);
-		}else if(type == 253){
-			request.getRequestDispatcher("/cable253.jsp").forward(request, response);
-		}else if(type == 254){
-			request.getRequestDispatcher("/cable254.jsp").forward(request, response);
+		System.out.println("transType:"+transType);
+		System.out.println("type"+type);
+		if(transType == 3){
+			switch(type){
+			case 251:
+				request.getRequestDispatcher("/cable251.jsp").forward(request, response);
+				break;
+			case 252:
+				request.getRequestDispatcher("/cable252.jsp").forward(request, response);
+				break;
+			case 253:
+				request.getRequestDispatcher("/cable253.jsp").forward(request, response);
+				break;
+			case 254:
+				request.getRequestDispatcher("/cable254.jsp").forward(request, response);
+				break;
+			}
+		}else if(transType == 4){
+			switch(type){
+			case 251:
+				request.getRequestDispatcher("/terrestrial251.jsp").forward(request, response);
+				break;
+			case 252:
+				request.getRequestDispatcher("/terrestrial252.jsp").forward(request, response);
+				break;
+			case 253:
+				request.getRequestDispatcher("/terrestrial253.jsp").forward(request, response);
+				break;
+			case 254:
+				request.getRequestDispatcher("/terrestrial254.jsp").forward(request, response);
+				break;
+			}
 		}
+		
+		
 		
 	}
 
@@ -103,38 +132,39 @@ public class CableServlet extends HttpServlet {
 		System.out.println(paraName+": "+request.getParameter(paraName));  
 		
 		}
-		int type = String2Int(request.getParameter("cableType"));
+		int type = String2Int(request.getParameter("type"));
 		
-		try{
+//		try{
 			switch(type){
 			case 253:try {
-					cable253(request,response);
-				} catch (ParseException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
+						DigitalTelevision253(request,response);
+					} catch (ParseException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
 				break;
-			case 254:cable254(request,response);
+			case 254:DigitalTelevision254(request,response);
 				break;
-			case 252:cable252(request,response);
+			case 252:DigitalTelevision252(request,response);
 				break;
-			case 251:cable251(request,response);
+			case 251:DigitalTelevision251(request,response);
 				break;
 			default:;
 			
 			}
-		}catch(Exception e){
-			request.setAttribute("msg","传输失败，请检查数据填写格式是否正确");
-			request.getRequestDispatcher("/msg.jsp").forward(request, response);
-			return;
-		}
+//		}catch(Exception e){
+//			request.setAttribute("msg","传输失败，请检查数据填写格式是否正确");
+//			request.getRequestDispatcher("/msg.jsp").forward(request, response);
+//			return;
+//		}
 		request.setAttribute("msg","传输成功");
 		request.getRequestDispatcher("/msg.jsp").forward(request, response);
 		
 	}
-	public void cable253(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException, ParseException {
-		System.out.println(253);
-		CableIndexEntity ie = new CableIndexEntity();
+	public void DigitalTelevision253(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException, ParseException {
+		int transType=String2Int(request.getParameter("transType"));
+		System.out.println("transType:"+transType);
+		IndexEntity ie = new IndexEntity();
 		EBMEntity[] ebm = new EBMEntity[1];
 		for(int i=0;i<ebm.length;i++){
 			ebm[i]=new EBMEntity();
@@ -144,6 +174,7 @@ public class CableServlet extends HttpServlet {
 			se[i] = new StreamEntity();
 		}
 		Descriptor1 des1= new Descriptor1();
+		Descriptor2 des2= new Descriptor2();
 		Program pro = new Program();
 		
 		
@@ -190,16 +221,28 @@ public class CableServlet extends HttpServlet {
 		ebm[0].setDetails_channel_transport_stream_id(String2Int(request.getParameter("details_channel_transport_stream_id")));
 		ebm[0].setDetails_channel_program_number(String2Int(request.getParameter("details_channel_program_number")));
 		ebm[0].setDetails_channel_PCR_PID(String2Int(request.getParameter("details_channel_PCR_PID")));
+		ebm[0].setDes_flag(String2Int(request.getParameter("des_flag")));
 		//details_channel_program_info_length
 		
-		ebm[0].setDes_flag(1);
-		//descriptor_length
-		des1.setFrequency(String2Double(request.getParameter("frequency")));
-		des1.setFEC_outer(String2Int(request.getParameter("FEC_outer")));
-		des1.setModulation(String2Int(request.getParameter("modulation")));
-		des1.setSymbol_rate(String2Double(request.getParameter("symbol_rate")));
-		des1.setFEC_inner(String2Int(request.getParameter("FEC_inner")));
-		des1.setDescriptor_length(11);
+		if(transType == 3){
+			//descriptor_length
+			des1.setFrequency(String2Double(request.getParameter("frequency")));
+			des1.setFEC_outer(String2Int(request.getParameter("FEC_outer")));
+			des1.setModulation(String2Int(request.getParameter("modulation")));
+			des1.setSymbol_rate(String2Double(request.getParameter("symbol_rate")));
+			des1.setFEC_inner(String2Int(request.getParameter("FEC_inner")));
+			des1.setDescriptor_length(11);
+		}else{
+			des2.setCentre_frequency(String2Double(request.getParameter("centre_frequency")));
+			des2.setFEC(String2Int(request.getParameter("FEC")));
+			des2.setModulation(String2Int(request.getParameter("modulation")));
+			des2.setNumber_of_subcarrier(String2Int(request.getParameter("number_of_subcarrier")));
+			des2.setFrame_header_mode(String2Int(request.getParameter("frame_header_mode")));
+			des2.setInterleaving_mode(String2Int(request.getParameter("interleaving_mode")));
+			des2.setOther_frequency_flag(String2Int(request.getParameter("other_frequency_flag")));
+			des2.setSfn_mfn_flag(String2Int(request.getParameter("sfn_mfn_flag")));
+		}
+		
 
 		
 		//2
@@ -487,16 +530,23 @@ public class CableServlet extends HttpServlet {
 		
 		ie.setSignature_data("0000000000000000000000000000000000000000000000000000000000000000");
 		ie.setCRC_32(1234);
-		des1.setProgram(pro);
-		se[0].setDescrpitor2(pro2);
+		if(transType == 3){
+			des1.setProgram(pro);
+		}else{
+			des2.setProgram(pro);
+		}
+		
+		se[0].setProgram2(pro2);
 		ebm[0].setDescriptor1(des1);
+		ebm[0].setDescriptor2(des2);
 		ebm[0].setStream(se);
 		ie.setEBM(ebm);
+		System.out.println(ie.toString());
 		DigitalTelevision cable = new DigitalTelevision();
 		cable.IndexMake(ie);
 	}
 	
-	public void cable254(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	public void DigitalTelevision254(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		ContentEntity ce = new ContentEntity();
 		
 //		ce.set(String2Int(request.getParameter("")));
@@ -587,7 +637,7 @@ public class CableServlet extends HttpServlet {
 		cable.ContentMake(ce);
 	}
 	
-	public void cable252(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	public void DigitalTelevision252(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		CertificateEntity ce = new CertificateEntity();
 		ce.setTable_id_extension(String2Int(request.getParameter("table_id_extension")));
 		ce.setVersion_number(String2Int(request.getParameter("version_number")));
@@ -627,7 +677,7 @@ public class CableServlet extends HttpServlet {
 		cable.CertificateMake(ce);
 	}
 	
-	public void cable251(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	public void DigitalTelevision251(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		System.out.println("cableservlet");
 		System.out.println(251);
 		ConfigureEntity ce = new ConfigureEntity();

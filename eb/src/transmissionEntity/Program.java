@@ -817,11 +817,59 @@ public class Program {
 		public void setDescriptor_length63(int descriptor_length63) {
 			this.descriptor_length63 = descriptor_length63;
 		}
-		
-		
-		
-		
-		
-		
+		@Override
+		public String toString() {
+			return "Program [descriptor_tag2=" + descriptor_tag2 + ", descriptor_length2=" + descriptor_length2
+					+ ", videoStandard=" + videoStandard + ", multiple_frame_rate_flag1=" + multiple_frame_rate_flag1
+					+ ", frame_rate_code1=" + frame_rate_code1 + ", MPEG_1_only_flag=" + MPEG_1_only_flag
+					+ ", constrained_parameter_flag=" + constrained_parameter_flag + ", still_picture_flag="
+					+ still_picture_flag + ", profile_and_level_indication=" + profile_and_level_indication
+					+ ", chroma_format1=" + chroma_format1 + ", frame_rate_extension_flag=" + frame_rate_extension_flag
+					+ ", reserved21=" + reserved21 + ", descriptor_tag3=" + descriptor_tag3 + ", descriptor_length3="
+					+ descriptor_length3 + ", free_format_flag=" + free_format_flag + ", ID=" + ID + ", layer=" + layer
+					+ ", variable_rate_audio_indicator=" + variable_rate_audio_indicator + ", reserved31=" + reserved31
+					+ ", descriptor_tag4=" + descriptor_tag4 + ", descriptor_length4=" + descriptor_length4
+					+ ", reserved41=" + reserved41 + ", hierarchy_type=" + hierarchy_type + ", reserved42=" + reserved42
+					+ ", hierarchy_layer_index=" + hierarchy_layer_index + ", reserved43=" + reserved43
+					+ ", hierarchy_embedded_layer_index=" + hierarchy_embedded_layer_index + ", reserved44="
+					+ reserved44 + ", hierarchy_channel=" + hierarchy_channel + ", descriptor_tag5=" + descriptor_tag5
+					+ ", descriptor_length5=" + descriptor_length5 + ", format_identifier=" + format_identifier
+					+ ", additional_identification_info=" + additional_identification_info + ", descriptor_tag6="
+					+ descriptor_tag6 + ", descriptor_length6=" + descriptor_length6 + ", alignment_type="
+					+ alignment_type + ", descriptor_tag7=" + descriptor_tag7 + ", descriptor_length7="
+					+ descriptor_length7 + ", horizontal_size=" + horizontal_size + ", vertical_size=" + vertical_size
+					+ ", aspect_ratio_information=" + aspect_ratio_information + ", descriptor_tag8=" + descriptor_tag8
+					+ ", descriptor_length8=" + descriptor_length8 + ", horizontal_offset=" + horizontal_offset
+					+ ", vertical_offset=" + vertical_offset + ", window_priority=" + window_priority
+					+ ", descriptor_tag9=" + descriptor_tag9 + ", descriptor_length9=" + descriptor_length9
+					+ ", CA_system_ID=" + CA_system_ID + ", reserved91=" + reserved91 + ", CA_PID=" + CA_PID
+					+ ", private_data_byte=" + private_data_byte + ", descriptor_tag10=" + descriptor_tag10
+					+ ", descriptor_length10=" + descriptor_length10 + ", IS0_639_language_code="
+					+ IS0_639_language_code + ", audio_type=" + audio_type + ", descriptor_tag11=" + descriptor_tag11
+					+ ", descriptor_length11=" + descriptor_length11 + ", external_clock_reference_indicator="
+					+ external_clock_reference_indicator + ", reserved111=" + reserved111 + ", clock_accuracy_integer="
+					+ clock_accuracy_integer + ", clock_accuracy_exponent=" + clock_accuracy_exponent + ", reserved112="
+					+ reserved112 + ", descriptor_tag12=" + descriptor_tag12 + ", descriptor_length12="
+					+ descriptor_length12 + ", bound_valid_flag=" + bound_valid_flag + ", LTW_offset_lower_bound="
+					+ LTW_offset_lower_bound + ", reserved121=" + reserved121 + ", LTW_offset_upper_bound="
+					+ LTW_offset_upper_bound + ", descriptor_tag13=" + descriptor_tag13 + ", descriptor_length13="
+					+ descriptor_length13 + ", copyright_identifier=" + copyright_identifier
+					+ ", additional_copyright_info=" + additional_copyright_info + ", descriptor_tag14="
+					+ descriptor_tag14 + ", descriptor_length14=" + descriptor_length14 + ", reserved141=" + reserved141
+					+ ", maximum_bitrate=" + maximum_bitrate + ", descriptor_tag15=" + descriptor_tag15
+					+ ", descriptor_length15=" + descriptor_length15 + ", private_data_indicator="
+					+ private_data_indicator + ", descriptor_tag16=" + descriptor_tag16 + ", descriptor_length16="
+					+ descriptor_length16 + ", reserved161=" + reserved161 + ", sb_leak_rate=" + sb_leak_rate
+					+ ", reserved162=" + reserved162 + ", sb_size=" + sb_size + ", descriptor_tag17=" + descriptor_tag17
+					+ ", descriptor_length17=" + descriptor_length17 + ", reserved171=" + reserved171
+					+ ", leak_valid_flag=" + leak_valid_flag + ", descriptor_tag18=" + descriptor_tag18
+					+ ", descriptor_length18=" + descriptor_length18 + ", closed_gop_flag=" + closed_gop_flag
+					+ ", identical_gop_flag=" + identical_gop_flag + ", max_gop_length=" + max_gop_length
+					+ ", descriptor_tag63=" + descriptor_tag63 + ", descriptor_length63=" + descriptor_length63
+					+ ", profile_id=" + profile_id + ", level_id=" + level_id + ", multiple_frame_rate_flag2="
+					+ multiple_frame_rate_flag2 + ", frame_rate_code2=" + frame_rate_code2 + ", AVS_still_present="
+					+ AVS_still_present + ", chroma_format2=" + chroma_format2 + ", sample_precision="
+					+ sample_precision + ", reserved22=" + reserved22 + "]";
+		}
 		
 }

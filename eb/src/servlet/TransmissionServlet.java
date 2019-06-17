@@ -22,7 +22,7 @@ import transmissionEntity.ConfigureEntity;
 import transmissionEntity.ContentEntity;
 import transmissionEntity.Descriptor1;
 import transmissionEntity.EBMEntity;
-import transmissionEntity.CableIndexEntity;
+import transmissionEntity.IndexEntity;
 import transmissionEntity.MediumEntity;
 import transmissionEntity.Multilingual_contentEntity;
 import transmissionEntity.Program;
@@ -122,8 +122,6 @@ public class TransmissionServlet extends HttpServlet {
 			case 1:medium(request,response);
 				break;
 			case 2:analogFM(request,response);
-				break;
-			case 4:terrestrial(request,response);
 				break;
 			case 5:trumpet(request,response);
 				break;

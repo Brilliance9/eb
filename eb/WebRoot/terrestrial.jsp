@@ -12,7 +12,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   <head>
     <base href="<%=basePath%>">
     
-    <title>传输覆盖网</title>   
+    <title>地面数字电视</title>   
     <meta charset="utf-8">
 	<meta http-equiv="pragma" content="no-cache">
 	<meta http-equiv="cache-control" content="no-cache">
@@ -23,7 +23,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<link rel="stylesheet" type="text/css" href="./css/button.css">
 	<link rel="stylesheet" type="text/css" href="./css/add.css">
 	<script type="text/javascript" src="./js/add.js"></script>
-
+	<script type="text/javascript" src="./js/transmission.js"></script>
   </head>
   
   <body class="bg" style="color:white;">
@@ -35,22 +35,20 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   
   <div id="b">
   
-  
-    <form action="/eb/TransmissionServlet"  method="get">
-    	
-    	请选择传输覆盖网的类型：
-    	<select name="type" class="a">
-			<option value="1">中波调幅广播</option>
-			<option value="2">模拟调频</option>
-			<option value="3">有线数字电视</option>
-			<option value="4">地面数字电视</option>
-			<option value="5">应急广播大喇叭</option>		
-    	</select><br/><br/>
-    	
-
-  		<input type="submit" class="a button button-primary button-rounded button-small" value="开始" />  <br/>
+  	<h2>地面数字电视</h2><br/><br/>
+    <form action="/eb/DigitalTelServlet"  method="get" onsubmit="return check_submit();">
+    	<input type = "hidden"  name = "transType" value="4"/>
+    	表类型：
+    	<select name="type" class="a" >
+			<option value="253">应急广播索引表</option>
+			<option value="254">应急广播内容表</option>
+			<option value="252">应急广播证书授权表</option>
+			<option value="251">管理配置表</option>
+    	</select><br/><br/><br/><br/>
+    	<input type="submit" class="a button button-primary button-rounded button-small" value="下一步" /><br/>
     </form>
  
   </div>
   </body>
+ 
 </html>

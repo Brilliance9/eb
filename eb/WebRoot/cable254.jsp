@@ -36,9 +36,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   <div id="b">
   
   	<h2>有线数字电视应急广播内容表</h2><br/><br/>
-    <form action="/eb/CableServlet"  method="post" onsubmit="return check_submit();">
+    <form action="/eb/DigitalTelServlet"  method="post" onsubmit="return check_submit();">
     	<input type = "hidden"  name = "transType" value="3"/> 	
-    	<input type = "hidden"  name = "cableType" value="254"/>
+    	<input type = "hidden"  name = "type" value="254"/>
     	
     	扩展表标识：
    		<input type="text" class="a"  name="table_id_extension" /><br/><br/>

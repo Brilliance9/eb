@@ -12,7 +12,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   <head>
     <base href="<%=basePath%>">
     
-    <title>有线数字电视</title>   
+    <title>地面数字电视</title>   
     <meta charset="utf-8">
 	<meta http-equiv="pragma" content="no-cache">
 	<meta http-equiv="cache-control" content="no-cache">
@@ -35,10 +35,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   
   <div id="b">
   
-  	<h2>有线数字电视管理配置表</h2><br/><br/>
+  	<h2>地面数字电视管理配置表</h2><br/><br/>
     <form action="/eb/DigitalTelServlet"  method="post" onsubmit="return check_submit();">
-    	<input type = "hidden"  name = "transType" value="3"/> 	
-    	<input type = "hidden"  name = "type" value="251"/>
+    	<input type = "hidden"  name = "transType" value="4"/> 	
+    	<input type = "hidden"  name ="type" value="251"/>
     	
     	
     	扩展表标识：

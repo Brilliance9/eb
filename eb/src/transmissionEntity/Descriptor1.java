@@ -89,5 +89,13 @@ public class Descriptor1 {
 	public void setProgram(Program program) {
 		this.program = program;
 	}
+
+	@Override
+	public String toString() {
+		return "Descriptor1 [descriptor_tag=" + descriptor_tag + ", descriptor_length=" + descriptor_length
+				+ ", frequency=" + frequency + ", reserved_future_use=" + reserved_future_use + ", FEC_outer="
+				+ FEC_outer + ", modulation=" + modulation + ", symbol_rate=" + symbol_rate + ", FEC_inner=" + FEC_inner
+				+ ", program=" + program + "]";
+	}
 	
 }

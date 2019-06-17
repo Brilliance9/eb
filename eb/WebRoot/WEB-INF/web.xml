@@ -810,11 +810,18 @@ standard deployment descriptor.
     <servlet-class>servlet.TransmissionServlet</servlet-class>
   </servlet>
   <servlet>
-    <servlet-name>CableServlet</servlet-name>
+    <servlet-name>DigitalTelServlet</servlet-name>
     <display-name>This is the display name of my J2EE component</display-name>
     <description>This is the description of my J2EE component</description>
-    <servlet-class>servlet.CableServlet</servlet-class>
+    <servlet-class>servlet.DigitalTelServlet</servlet-class>
   </servlet>
+  <servlet>
+    <servlet-name>TerrestrialServlet</servlet-name>
+    <display-name>This is the display name of my J2EE component</display-name>
+    <description>This is the description of my J2EE component</description>
+    <servlet-class>servlet.TerrestrialServlet</servlet-class>
+  </servlet>
+
 
 
 
@@ -845,7 +852,11 @@ standard deployment descriptor.
     <url-pattern>/TransmissionServlet</url-pattern>
   </servlet-mapping>
   <servlet-mapping>
-    <servlet-name>CableServlet</servlet-name>
-    <url-pattern>/CableServlet</url-pattern>
+    <servlet-name>DigitalTelServlet</servlet-name>
+    <url-pattern>/DigitalTelServlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>TerrestrialServlet</servlet-name>
+    <url-pattern>/TerrestrialServlet</url-pattern>
   </servlet-mapping>
 </web-app>

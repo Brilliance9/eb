@@ -12,7 +12,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   <head>
     <base href="<%=basePath%>">
     
-    <title>有线数字电视</title>   
+    <title>地面数字电视</title>   
     <meta charset="utf-8">
 	<meta http-equiv="pragma" content="no-cache">
 	<meta http-equiv="cache-control" content="no-cache">
@@ -35,9 +35,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   
   <div id="b">
   
-  	<h2>有线数字电视应急广播索引表</h2><br/><br/>
+  	<h2>地面数字电视应急广播索引表</h2><br/><br/>
     <form action="/eb/DigitalTelServlet"  method="post" onsubmit="return check_submit();">
-    	<input type = "hidden"  name = "transType" value="3"/> 	
+    	<input type = "hidden"  name = "transType" value="4"/> 	
     	<input type = "hidden"  name = "type" value="253"/> 	
     		扩展表标识：
     		<input type="text" class="a"  name="table_id_extension" /><br/><br/>
@@ -100,40 +100,59 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     				节目号：
     				<input type="text" class="a"  name="details_channel_program_number" /><br/><br/>
     				指定频道PCR标识：
-    				<input type="text" class="a"  name="details_channel_PCR_PID" /><br/><br/>
-					<input type="hidden" name="des_flag" value="1"/>
-	    			<br/><br/><br/><br/>
-		    		<div class="first"> 有线传送系统描述符：</div><br/>
-		    		频率(小数形式)：
-    				<input type="text" class="a"  name="frequency" /><br/><br/>
-    				前向纠错外码：
-	    			<select  name="FEC_outer" class="a">
-						<option value="1">无FEC外码</option>
-						<option value="2">RS(204,188)</option>
+    				<input type="text" class="a"  name="details_channel_PCR_PID" /><br/><br/><br/><br/>
+    				
+    				<input type="hidden" name ="des_flag" value="2"/>
+		    		<div class="first"> 地面传送系统描述符：</div><br/>
+		    		中心频率(小数形式)：
+    				<input type="text" class="a"  name="centre_frequency" /><br/><br/>
+	    			前向纠错内码：
+	    			<select  name="FEC" class="a">
+	    				<option value="0">未定义</option>
+						<option value="1">码率为 0.4 的 FEC(7488,3008)码</option>
+						<option value="2">码率为 0.6 的 FEC(7488,4512)码</option>
+						<option value="3">码率为 0.8 的 FEC(7488,6016)码</option>
 		    		</select><br/><br/>
-		    		调制方式：
+		    		地面调制方式：
 	    			<select  name="modulation" class="a">
-						<option value="1">16QAM</option>
-						<option value="2">32QAM</option>
-						<option value="3">64QAM</option>
-						<option value="4">128QAM</option>
-						<option value="5">256QAM</option>
+	    				<option value="0">未定义</option>
+						<option value="1">4-QAM</option>
+						<option value="2">4-QAM-NR</option>
+						<option value="3">16-QAM</option>
+						<option value="4">32-QAM</option>
+						<option value="5">64-QAM</option>
 		    		</select><br/><br/>
-		    		符号率(小数形式)：
-    				<input type="text" class="a"  name="symbol_rate" /><br/><br/>
-    				前向纠错内码：
-	    			<select  name="FEC_inner" class="a">
-						<option value="1">卷积码率1/2</option>
-						<option value="2">卷积码率2/3</option>
-						<option value="3">卷积码率3/4</option>
-						<option value="4">卷积码率5/6</option>
-						<option value="5">卷积码率7/8</option>
-						<option value="6">卷积码率3/5</option>
-						<option value="7">卷积码率4/5</option>
-						<option value="8">卷积码率9/10</option>
-						<option value="9">卷积码率13/15</option>
-						<option value="15">无卷积编码</option>
-		    		</select><br/><br/><br/><br/>
+		    		子载波数量：
+	    			<select  name="number_of_subcarrier" class="a">
+	    				<option value="0">未定义</option>
+						<option value="1">子载波数量 C=1,有双导频</option>
+						<option value="2">子载波数量 C=1,无双导频</option>
+						<option value="3">子载波数量 C=3780</option>
+		    		</select><br/><br/>
+		    		帧头模式：
+	    			<select  name="frame_header_mode" class="a">
+						<option value="0">帧头模式 1,PN相位变化</option>
+						<option value="1">帧头模式 1,PN相位不变</option>
+						<option value="2">帧头模式 2</option>
+						<option value="3">帧头模式 3,PN相位变化</option>
+						<option value="4">帧头模式 3,PN相位不变</option>
+		    		</select><br/><br/>
+		    		交织模式：
+	    			<select  name="interleaving_mode" class="a">
+						<option value="0">交织模式 1</option>
+						<option value="1">交织模式 1</option>
+		    		</select><br/><br/>
+		    		其他频率标志：
+	    			<select  name="other_frequency_flag" class="a">
+						<option value="0">未使用其他频率</option>
+						<option value="1">使用了一个以上的其他频率</option>
+		    		</select><br/><br/>
+		    		单频网/多频网标志：
+	    			<select  name="sfn_mfn_flag" class="a">
+						<option value="0">单频网</option>
+						<option value="1">多频网</option>
+		    		</select><br/><br/>
+		    		<br/><br/>
 		    		
 		    		
 		    		<div class="first"> 视频流描述符 GB/T 17975.2或GB/T 17191.2：</div><br/>

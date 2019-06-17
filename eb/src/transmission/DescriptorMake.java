@@ -7,6 +7,7 @@ import transmissionEntity.Program;
 public class DescriptorMake {
 	
 	public void CableDescriptorMake(Encapsulate enc,Descriptor1 des){
+		System.out.println(3);
 		enc.encInt(des.getDescriptor_tag(), 8);
 		enc.encInt(des.getDescriptor_length(), 8);
 		enc.DoubleEnc(enc, des.getFrequency(), 4, 4);
@@ -20,6 +21,7 @@ public class DescriptorMake {
 		ProgramMake(enc,pro);
 	}
 	public void TerrestrialDescriptorMake(Encapsulate enc,Descriptor2 des){
+		System.out.println(4);
 		enc.encInt(des.getDescriptor_tag(), 8);
 		enc.encInt(des.getDescriptor_length(), 8);
 		enc.DoubleEnc(enc, des.getCentre_frequency(),4, 4);

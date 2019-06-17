@@ -13,7 +13,7 @@ public class DigitalTelevision {
 	Encapsulate enc = new Encapsulate();
 	TransTool tool = new TransTool();
 	
-	public void IndexMake(CableIndexEntity ie){
+	public void IndexMake(IndexEntity ie){
 		enc.encInt(ie.getTable_id(), 8);
 		enc.encInt(ie.getSection_syntax_indicator(), 1);
 		enc.encInt(1, 1);
@@ -87,7 +87,7 @@ public class DigitalTelevision {
 					enc.encInt(0, 2);
 					enc.encInt(se[k].getES_info_length(), 10);
 					//描述符2
-					dm.ProgramMake(enc, se[k].getDescrpitor2());
+					dm.ProgramMake(enc, se[k].getProgram2());
 				}
 			}
 		}
