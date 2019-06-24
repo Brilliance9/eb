@@ -126,12 +126,13 @@ public class Encapsulate {
 	 * 功能:将私有成员message输出到文件，文件名为:日期+alert_id
 	 * 形参:(alert_id:警报ID，此次仅用于生成文件名)
 	 * */
-	public void Message2File() {
+	public void Message2File(String path) {
 		System.out.println("出来吧文件！");
 		try {
 			SimpleDateFormat sdf = new SimpleDateFormat("yyyy_MM_dd_hh_mm_ss");
-			//String filename ="./files/"+sdf.format(new Date())+"_"+alert_id+".dat";
-			FileOutputStream fos = new FileOutputStream(new File("xghtest.dat"));
+			String filename ="./files/"+path+sdf.format(new Date())+"_"+".dat";
+			System.out.println(filename);
+			FileOutputStream fos = new FileOutputStream(new File(filename));
 			byte[] output = new byte[countbyte+1];
 			for(int i=0;i<=countbyte;i++)
 				output[i] = message[i];

@@ -193,7 +193,8 @@ public class TransmissionServlet extends HttpServlet {
 		ae.setInstructions(String2Int(request.getParameter("instructions")));
 		ae.setMaintenanceCycle(String2Int(request.getParameter("MaintenanceCycle")));
 		//3
-		if(request.getParameter("type") == "3"){
+		if(request.getParameter("type").equals("3")){
+			System.out.println("test");
 			String time=request.getParameter("time");
 			String[] str=time.split("-");
 			String year = str[0];

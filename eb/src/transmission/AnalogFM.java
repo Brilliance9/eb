@@ -87,7 +87,7 @@ public class AnalogFM {
 			enc.encapsulate(tool.Byte2Bytes(item), 8);
 		}
 		enc.printmsg();
-		enc.Message2File();
+		enc.Message2File("AnalogFM_"+afm.getType()+"_");
 		return enc;
 	}
 	
@@ -369,7 +369,8 @@ public class AnalogFM {
 		afme.setCertificate("123595124562");
 		afme.setSign("ingmshaghyfhnmshjaloshnrhsiaw63tmcnmashry7sgt0rhys1hysqmc64jhsmkF");
 		AnalogFM af = new AnalogFM();
-		System.out.println(af.AnalogFMMake(afme));;
+		System.out.println(af.AnalogFMMake(afme));
+		System.out.println(afme.toString());
 		
 		String s1="foGrysMo74xiKrnzpdmNg4OXGLPIHOYCgIowBStaYPpGpWgIMoZfpN";
 		String s2="AAAJ3QAAAAAAQn1utM+foGrysMo74xiKrnzpdmNg4OXGLPIHOYCgIowBStaYPpGpWgIMoZfpN/E6RJkGHFLwkenYM/K3gMFipJQ=";

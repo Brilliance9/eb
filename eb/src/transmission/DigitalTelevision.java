@@ -5,9 +5,18 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 
-import transmission.Encapsulate;
-import transmission.TransTool;
-import transmissionEntity.*;
+import transmissionEntity.Auxiliary_dataEntity;
+import transmissionEntity.CertificateEntity;
+import transmissionEntity.ConfigureCommandEntity;
+import transmissionEntity.ConfigureEntity;
+import transmissionEntity.ContentEntity;
+import transmissionEntity.Descriptor1;
+import transmissionEntity.Descriptor2;
+import transmissionEntity.EBMEntity;
+import transmissionEntity.IndexEntity;
+import transmissionEntity.Multilingual_contentEntity;
+import transmissionEntity.StreamEntity;
+import udp.Send;
 
 public class DigitalTelevision {
 	Encapsulate enc = new Encapsulate();
@@ -27,6 +36,7 @@ public class DigitalTelevision {
 		enc.encInt(ie.getLast_section_number(), 8);
 		enc.encInt(ie.getEBM_number(), 8);
 		EBMEntity[] ebm = ie.getEBM();
+		int dtflag = ebm[0].getDes_flag();
 		for(int i=0;i<ie.getEBM_number();i++){
 			EBMEntity item = ebm[i];
 			enc.encInt(item.getEBM_length(), 16);
@@ -96,8 +106,13 @@ public class DigitalTelevision {
 		//CRC
 		enc.encInt(ie.getCRC_32(),32);
 		
-		
-		enc.Message2File();
+		String path = "";
+		if(dtflag == 1){
+			path = "有线数字电视_"+ie.getTable_id()+"_";
+		}else{
+			path = "地面数字电视_"+ie.getTable_id()+"_";
+		}
+		enc.Message2File(path);
 		enc.printmsg();
 	}
 	
@@ -143,7 +158,7 @@ public class DigitalTelevision {
 		enc.ASCIIEnc(enc, ce.getSignature_data());
 		//CRC
 		enc.encInt(ce.getCRC_32(),32);
-		enc.Message2File();
+		enc.Message2File("数字电视"+ce.getTable_id()+"_");
 		enc.printmsg();
 	}
 	
@@ -174,7 +189,7 @@ public class DigitalTelevision {
 		enc.ASCIIEnc(enc, ce.getSignature_data());
 		//CRC
 		enc.encInt(ce.getCRC_32(),32);
-		enc.Message2File();
+		enc.Message2File("数字电视"+ce.getTable_id()+"_");
 		enc.printmsg();
 	}
 	
@@ -290,7 +305,9 @@ public class DigitalTelevision {
 		enc.ASCIIEnc(enc, ce.getSignature_data());
 		//CRC
 		enc.encInt(ce.getCRC_32(),32);
-		enc.Message2File();
+		enc.Message2File("数字电视"+"_"+ce.getTable_id()+"_");
+		Send s = new Send();
+		s.run(enc.getMessage());
 		enc.printmsg();
 	}
 	

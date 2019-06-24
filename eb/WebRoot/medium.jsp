@@ -110,7 +110,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
         	<option value="0">不切换）</option>
 			<option value="1">中波</option>
     	</select><br/><br/>
-    	频点值（整数形式）：
+    	频点值（整数形式kHz）：
     	<input type="text" class="a"  name="value" /><br/><br/>
     	</div>
     	

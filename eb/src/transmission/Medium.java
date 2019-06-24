@@ -1,6 +1,7 @@
 package transmission;
 
-import transmissionEntity.*;
+import transmissionEntity.MediumEntity;
+import udp.Send;
 
 public class Medium {
 	Encapsulate enc = new Encapsulate();
@@ -180,9 +181,9 @@ public class Medium {
 		
 		
 		enc.printmsg();
-		enc.Message2File();
-		System.out.println("生成文件成功");
-		
+		enc.Message2File("medium_"+me.getType()+"_");
+		Send s = new Send();
+		s.run(enc.getMessage());
 		return enc.getCountbyte();
 	}
 

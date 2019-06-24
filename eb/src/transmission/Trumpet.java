@@ -23,7 +23,89 @@ public class Trumpet {
 		enc.encInt(te.getCRC_32(), 32);
 	}
 	public void TrumpetMake(TrumpetEntity te){
-		
+		switch(te.getProtocol_type()){
+		case 0x01:
+			make01(te);
+			break;
+//		case 0x02:
+//			make02(te);
+//			break;
+//		case 0x03:
+//			make03(te);
+//			break;
+		case 0x04:
+			make04(te);
+			break;
+		case 0x05:
+			make05(te);
+			break;
+		case 0x06:
+			make06(te);
+			break;
+		case 0x07:
+			make07(te);
+			break;
+		case 0x08:
+			make08(te);
+			break;
+		case 0x09:
+			make09(te);
+			break;
+		case 0x0a:
+			make0a(te);
+			break;
+		case 0x0b:
+			make0b(te);
+			break;
+		case 0x0c:
+			make0c(te);
+			break;
+		case 0x0d:
+			make0d(te);
+			break;
+		case 0x0e:
+			make0e(te);
+			break;
+		case 0x0f:
+			make0f(te);
+			break;
+		case 0x10:
+			make10(te);
+			break;
+		case 0x11:
+			make11(te);
+			break;
+//		case 0x12:
+//			make12(te);
+//			break;
+//		case 0x13:
+//			make13(te);
+//			break;
+//		case 0x14:
+//			make14(te);
+//			break;
+//		case 0x15:
+//			make15(te);
+//			break;
+//		case 0x16:
+//			make16(te);
+//			break;
+//		case 0x17:
+//			make17(te);
+//			break;
+//		case 0x21:
+//			make21(te);
+//			break;
+		case 0x40:
+			make40(te);
+			break;
+		case 0x41:
+			make41(te);
+			break;
+		case 0x3f:
+			make3f(te);
+			break;
+		}
 	}
 	
 	//白名单更新
