@@ -164,10 +164,10 @@ public class TransmissionServlet extends HttpServlet {
 		me.setSign("0000000000000000000000000000000000000000000000000000000000000000");
 		Medium medium = new Medium();
 		Medium medium2 = new Medium();
-		
-		int length=medium.mediumMake(me);
+		//第二个参数判断是否进行UDP传输
+		int length=medium.mediumMake(me,false);
 		me.setLength(length);
-		medium2.mediumMake(me);
+		medium2.mediumMake(me,true);
 		System.out.println(me.toString());
 	}
 	
@@ -273,10 +273,10 @@ public class TransmissionServlet extends HttpServlet {
 		
 		AnalogFM afm1= new AnalogFM();
 		AnalogFM afm2= new AnalogFM();
-		int length=afm1.AnalogFMMake(ae);
+		int length=afm1.AnalogFMMake(ae,false);
 		ae.setLength(length-2);
 		
-		afm2.AnalogFMMake(ae);
+		afm2.AnalogFMMake(ae,true);
 		System.out.println(ae.toString());
 	}
 	

@@ -6,7 +6,7 @@ import udp.Send;
 public class Medium {
 	Encapsulate enc = new Encapsulate();
 	TransTool tool = new TransTool();
-	public int mediumMake(MediumEntity me){
+	public int mediumMake(MediumEntity me, boolean judge){
 		
 		
 		//封装起始标志0x69,10进制的105
@@ -183,7 +183,10 @@ public class Medium {
 		enc.printmsg();
 		enc.Message2File("medium_"+me.getType()+"_");
 		Send s = new Send();
-		s.run(enc.getMessage());
+		if(judge == true){
+			s.run(enc.getMessage());
+		}
+		
 		return enc.getCountbyte();
 	}
 
@@ -207,7 +210,7 @@ public class Medium {
 		me.setTime(1235254159);
 		me.setCertificate("123595124562");
 		me.setSign("0000000000000000000000000000000000000000000000000000000000000000");
-		System.out.println(medium.mediumMake(me));;
+		System.out.println(medium.mediumMake(me,true));;
 		
 		
 

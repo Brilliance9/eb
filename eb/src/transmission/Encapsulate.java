@@ -147,8 +147,8 @@ public class Encapsulate {
 	}
 	
 	public byte[] getMessage() {
-		byte[] output = new byte[countbyte+1];
-		for(int i=0;i<=countbyte;i++)
+		byte[] output = new byte[countbyte];
+		for(int i=0;i<countbyte;i++)
 			output[i] = message[i];
 		return output;
 	}

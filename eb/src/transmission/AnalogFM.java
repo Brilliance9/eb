@@ -1,12 +1,13 @@
 package transmission;
 
-import transmissionEntity.*;
+import transmissionEntity.AnalogFMEntity;
+import udp.Send;
 
 public class AnalogFM {
 
 	Encapsulate enc = new Encapsulate();
 	TransTool tool = new TransTool();
-	public int AnalogFMMake(AnalogFMEntity afm){
+	public int AnalogFMMake(AnalogFMEntity afm,boolean judge){
 		
 
 		//根据数据包类型调用不同的封装函数
@@ -50,7 +51,14 @@ public class AnalogFM {
 		default:;
 		
 		}
+		
+		if(judge == true){
+			Send s = new Send();
+			s.run(enc.getMessage());
+		}
+		
 		return enc.getCountbyte();
+
 		
 	}
 	
@@ -369,7 +377,7 @@ public class AnalogFM {
 		afme.setCertificate("123595124562");
 		afme.setSign("ingmshaghyfhnmshjaloshnrhsiaw63tmcnmashry7sgt0rhys1hysqmc64jhsmkF");
 		AnalogFM af = new AnalogFM();
-		System.out.println(af.AnalogFMMake(afme));
+		System.out.println(af.AnalogFMMake(afme,true));
 		System.out.println(afme.toString());
 		
 		String s1="foGrysMo74xiKrnzpdmNg4OXGLPIHOYCgIowBStaYPpGpWgIMoZfpN";
