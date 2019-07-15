@@ -117,7 +117,7 @@ public class TransmissionServlet extends HttpServlet {
 		}
 		int transType = Integer.parseInt(request.getParameter("transType"));
 		
-		try{
+//		try{
 			switch(transType){
 			case 1:medium(request,response);
 				break;
@@ -128,11 +128,11 @@ public class TransmissionServlet extends HttpServlet {
 			default:;
 			
 			}
-		}catch(Exception e){
-			request.setAttribute("msg","传输失败，请检查数据填写格式是否正确");
-			request.getRequestDispatcher("/msg.jsp").forward(request, response);
-			return;
-		}
+//		}catch(Exception e){
+//			request.setAttribute("msg","传输失败，请检查数据填写格式是否正确");
+//			request.getRequestDispatcher("/msg.jsp").forward(request, response);
+//			return;
+//		}
 		request.setAttribute("msg","传输成功");
 		request.getRequestDispatcher("/msg.jsp").forward(request, response);
 		
@@ -284,7 +284,8 @@ public class TransmissionServlet extends HttpServlet {
 		
 	}
 	public void trumpet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
+		System.out.println("trumpet");
+		System.out.println(Integer.parseInt(request.getParameter("protocol_type"), 16));
 	}
 	
 	

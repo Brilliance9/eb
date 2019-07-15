@@ -355,3 +355,59 @@ function terminalNumber7(doc){
 	}
 	doc.parentElement.innerHTML=text;
 }
+
+//trumpet.jsp
+function protocolType(doc){
+	var type0c = document.getElementById("type0c");
+	var type0d = document.getElementById("type0d");
+	var type0e = document.getElementById("type0e");
+	var type0f = document.getElementById("type0f");
+	var type10 = document.getElementById("type10");
+	var type11 = document.getElementById("type11");
+	var type41 = document.getElementById("type41");
+	var type05 = document.getElementById("type05");
+	var type06 = document.getElementById("type06");
+	var arr = [type0c,type0d,type0e,type0f,type10,type11,type41,type05,type06];
+	for(var i=0;i<arr.length;i++){
+		arr[i].style.display="none";
+	}
+	document.getElementById("type"+doc.value).style.display = 'block';
+}
+function whiteListFun(doc){
+	text ='';
+	for(var i=0;i<doc.value;i++){
+		text +='操纵类型：'
+    			+'<select name="oper_type" class="a">'
+				+'	<option value="1">增加</option>'
+				+'	<option value="2">修改</option>'
+				+'	<option value="3">删除</option>'
+				+'</select><br/><br/>'
+    			+'手机号码：'
+    			+'<input type="text" class="a"  name="phone_number" /><br/><br/>'
+    			+'姓名：'
+    			+'<input type="text" class="a"  name="user_name" /><br/><br/>'
+    			+'许可类型：'
+    			+'<select name="permission_type" class="a">'
+				+'	<option value="1">短信</option>'
+				+'	<option value="2">电话</option>'
+				+'	<option value="3">短信和电话</option>'
+				+'</select><br/><br/>'
+				
+    			+'<div id="codeid">'
+	    		+'	授权区域数量：'
+	    		+'	<input type="text" class="a"  name="permission_area_number" id="permission_area_number" oninput="permissionAreaFun(this)"/><br/><br/><br/>'
+		    	+'	授权区域编码1：'
+		    	+'	<input type="text" class="a"  name="permission_area_code" /><br/><br/>'
+		    	+'</div><br/><br/><br/>'
+	}
+	document.getElementById("whiteList").innerHTML=text;
+}
+function permissionAreaFun(doc){
+	text='授权区域数量：'
+	    +'<input type="text" class="a" value ="'+doc.value+'" name="permission_area_number" id="permission_area_number" oninput="permissionAreaFun(this)"/><br/><br/><br/>'
+	for(var i=0;i<doc.value;i++){
+		text+='授权区域编码：'
+		    +'<input type="text" class="a"  name="permission_area_code" /><br/><br/>'
+	}
+	doc.parentElement.innerHTML=text;
+}
