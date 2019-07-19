@@ -13,7 +13,7 @@ public class Receive implements Runnable {
         //创建接受消息的套接字
         DatagramSocket receviceSocket = null;
         try {
-            receviceSocket = new DatagramSocket(9090);
+            receviceSocket = new DatagramSocket(10066);
         } catch (SocketException e) {
             e.printStackTrace();
         }

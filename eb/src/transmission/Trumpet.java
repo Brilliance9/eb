@@ -235,7 +235,7 @@ public class Trumpet {
 		enc.encInt(te.getLogic_address_number(), 8);
 		for(int i=0;i<te.getLogic_address_number();i++){
 			enc.encInt(te.getPhysical_address_length()[i],8);
-			enc.ASCIIEnc(enc, te.getPhysical_address()[i]);
+			enc.StringEnc(enc, te.getPhysical_address()[i]);
 			enc.encInt(te.getLogic_address_length()[i], 8);
 			enc.ASCIIEnc(enc, te.getLogic_address()[i]);
 		}

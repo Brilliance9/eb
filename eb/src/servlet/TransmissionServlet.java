@@ -1,10 +1,6 @@
 package servlet;
 
 import java.io.IOException;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Calendar;
-import java.util.Date;
 import java.util.Enumeration;
 
 import javax.servlet.ServletException;
@@ -13,20 +9,11 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import transmission.AnalogFM;
-import transmission.DigitalTelevision;
 import transmission.Medium;
 import transmissionEntity.AnalogFMEntity;
-import transmissionEntity.Auxiliary_dataEntity;
-import transmissionEntity.CertificateEntity;
-import transmissionEntity.ConfigureEntity;
-import transmissionEntity.ContentEntity;
-import transmissionEntity.Descriptor1;
-import transmissionEntity.EBMEntity;
-import transmissionEntity.IndexEntity;
 import transmissionEntity.MediumEntity;
-import transmissionEntity.Multilingual_contentEntity;
-import transmissionEntity.Program;
-import transmissionEntity.StreamEntity;
+import transmissionEntity.TrumpetEntity;
+import transmissionEntity.White_list;
 
 public class TransmissionServlet extends HttpServlet {
 
@@ -283,9 +270,172 @@ public class TransmissionServlet extends HttpServlet {
 	public void terrestrial(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 	}
+	
+	//应急广播大喇叭前后端数据交互
 	public void trumpet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		System.out.println("trumpet");
-		System.out.println(Integer.parseInt(request.getParameter("protocol_type"), 16));
+		int protocol_type =Integer.parseInt(request.getParameter("protocol_type"), 16);
+		TrumpetEntity tt = new TrumpetEntity();
+		tt.setProtocol_type(protocol_type);
+		
+
+		
+		//data_length
+		
+		//0c
+		White_list[] white_list = new White_list[String2Int(request.getParameter("white_list_length"))];
+		
+		int wlLen = white_list.length;
+		for(int i=0;i<wlLen;i++){
+			white_list[i] = new White_list();
+		}
+		int[] oper_type = new int[wlLen];
+		int[] phone_number_length = new int[wlLen];
+		String[] phone_number = new String[wlLen];
+		int[] user_name_length = new int[wlLen];
+		String[] user_name = new String[wlLen];
+		int[] permission_type = new int[wlLen];
+		int[] permission_area_number = new int[wlLen];
+		int[] permission_area_length = new int[wlLen];
+		String[] permission_area_code = new String[wlLen];
+		
+//		=String2Ints(request.getParameterValues(""));
+//		=request.getParameterValues("");
+		
+		oper_type=String2Ints(request.getParameterValues("oper_type"));
+		phone_number=request.getParameterValues("phone_number");
+		for(int i=0;i<wlLen;i++){
+			phone_number_length[i] = phone_number[i].length();
+		}
+		user_name=request.getParameterValues("user_name");
+		for(int i=0;i<wlLen;i++){
+			user_name_length[i] = user_name[i].length();
+		}
+		permission_type=String2Ints(request.getParameterValues("permission_type"));
+		permission_area_number=String2Ints(request.getParameterValues("permission_area_number"));
+		permission_area_code=request.getParameterValues("permission_area_code");
+		for(int i=0;i<wlLen;i++){
+			permission_area_length[i] = permission_area_code[0].length();
+		}
+		int count =0;
+		for(int i=0;i<wlLen;i++){
+			white_list[i].setOper_type(oper_type[i]);
+			white_list[i].setPhone_number_length(phone_number_length[i]);
+			white_list[i].setPhone_number(phone_number[i]);
+			white_list[i].setUser_name_length(user_name_length[i]);
+			white_list[i].setUser_name(user_name[i]);
+			white_list[i].setPermission_type(permission_type[i]);
+			white_list[i].setPermission_area_number(permission_area_number[i]);
+			white_list[i].setPermission_area_length(permission_area_length[i]);
+			String[] area_code = new String[permission_area_number[i]];
+			for(int j=0;j<permission_area_number[i];j++){
+				area_code[j] = permission_area_code[count];
+				count++;
+			}
+			white_list[i].setPermission_area_code(area_code);
+		}
+		tt.setWhite_list(white_list);
+		tt.setWhite_list_length(wlLen);
+		
+
+		//0d
+		tt.setReback_type0d(String2Int(request.getParameter("reback_type0d")));
+		tt.setReback_cycle(String2Int(request.getParameter("reback_cycle")));
+		tt.setReback_address0d(request.getParameter("reback_address0d"));
+		tt.setReback_address_length0d(tt.getReback_address0d().length());
+		
+		//0e
+		tt.setFront_code0e(request.getParameter("front_code0e"));
+		tt.setOutput_channel_id(String2Int(request.getParameter("output_channel_id")));
+		tt.setOutput_channel_state(String2Int(request.getParameter("output_channel_state")));
+		
+		//0f
+		tt.setFront_code0f(request.getParameter("front_code0f"));
+		tt.setInput_channel_id(String2Int(request.getParameter("input_channel_id")));
+		tt.setInput_channel_state(String2Int(request.getParameter("input_channel_state")));
+		
+		//10
+		tt.setFront_code10(request.getParameter("front_code10"));
+		tt.setEbm_id(request.getParameter("ebm_id"));
+		tt.setTask_type(String2Int(request.getParameter("task_type")));
+		tt.setStartTime(String2Long(request.getParameter("startTime")));
+		tt.setEndTime(String2Long(request.getParameter("endTime")));
+		
+		
+		//11
+		tt.setFront_code11(request.getParameter("front_code11"));
+		
+		//41
+		int certauth_number41 = String2Int(request.getParameter("certauth_number41"));
+		
+		int cert_number41 = String2Int(request.getParameter("cert_number41"));
+		
+		
+		int[] certauth_length41 = new int[certauth_number41];
+		String[] certauth41 = request.getParameterValues("certauth41");
+		int[] certh_length41 = new int[cert_number41];
+		String[] certh41 = request.getParameterValues("certh41");
+		
+		for(int i=0;i<certauth_number41;i++){
+			certauth_length41[i]=certauth41[i].length();
+		}
+		for(int i=0;i<cert_number41;i++){
+			certh_length41[i] = certh41[i].length();
+		}
+		
+		tt.setCertauth_number41(certauth_number41);
+		tt.setCertauth_length41(certauth_length41);
+		tt.setCertauth41(certauth41);
+		tt.setCert_number41(cert_number41);
+		tt.setCerth_length41(certh_length41);
+		tt.setCerth41(certh41);
+		
+		//05
+		int logic_address_number = String2Int(request.getParameter("logic_address_number"));
+		String[] physical_address = request.getParameterValues("physical_address");
+		int[] physical_address_length = new int[logic_address_number];
+		for(int i=0;i<logic_address_number;i++){
+			physical_address_length[i] = physical_address[i].length();
+		}
+		String[] logic_address = request.getParameterValues("logic_address");
+		int[] logic_address_length = new int[logic_address_number];
+		for(int i=0;i<logic_address_number;i++){
+			logic_address_length[i] = logic_address[i].length();
+		}
+		tt.setLogic_address_number(logic_address_number);
+		tt.setPhysical_address_length(physical_address_length);
+		tt.setPhysical_address(physical_address);
+		tt.setLogic_address(logic_address);
+		tt.setLogic_address_length(logic_address_length);
+		
+		//06
+		tt.setVolume(String2Int(request.getParameter("volume")));
+		tt.setResource_code_type06(String2Int(request.getParameter("resource_code_type06")));
+		tt.setResource_code_number06(String2Int(request.getParameter("resource_code_number06")));
+		String[] resource_code06=request.getParameterValues("resource_code06");
+		tt.setResource_code06(resource_code06);
+		int resource_code_length06 =0;
+		for(int i=0;i<resource_code06.length;i++){
+			resource_code_length06 = resource_code06[i].length();
+		}
+		tt.setResource_code_length06(resource_code_length06);
+		
+		//07
+		tt.setReback_type07(String2Int(request.getParameter("reback_type07")));
+		tt.setReback_address07(request.getParameter("reback_address07"));
+		tt.setReback_address_length07(tt.getReback_address07().length());
+		tt.setResource_code_type07(String2Int(request.getParameter("resource_code_type07")));
+		tt.setResource_code_number07(String2Int(request.getParameter("resource_code_number07")));
+		String[] resource_code07=request.getParameterValues("resource_code07");
+		tt.setResource_code07(resource_code07);
+		int resource_code_length07 =0;
+		for(int i=0;i<resource_code07.length;i++){
+			resource_code_length07 = resource_code07[i].length();
+		}
+		tt.setResource_code_length07(resource_code_length07);
+		System.out.println(tt.toString());
+//		tt.set(request.getParameter(""));
+//		tt.set(String2Int(request.getParameter("")));
 	}
 	
 	

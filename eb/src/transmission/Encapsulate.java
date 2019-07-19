@@ -169,7 +169,7 @@ public class Encapsulate {
 	}
 	/**
 	 * @param s 
-	 * 		存放的是整数，取出每一位封装成4个比特
+	 * 		按BCD编码，存放的是整数，取出每一位封装成4个比特
 	 * @return 
 	 */
 	public Encapsulate StringEnc(Encapsulate enc,String s){

@@ -367,7 +367,13 @@ function protocolType(doc){
 	var type41 = document.getElementById("type41");
 	var type05 = document.getElementById("type05");
 	var type06 = document.getElementById("type06");
-	var arr = [type0c,type0d,type0e,type0f,type10,type11,type41,type05,type06];
+	var type07 = document.getElementById("type07");
+	var type08 = document.getElementById("type08");
+	var type09 = document.getElementById("type09");
+	var type0a = document.getElementById("type0a");
+	var type0b = document.getElementById("type0b");
+	var type3f = document.getElementById("type3f");
+	var arr = [type0c,type0d,type0e,type0f,type10,type11,type41,type05,type06,type07,type08,type09,type0a,type0b,type3f];
 	for(var i=0;i<arr.length;i++){
 		arr[i].style.display="none";
 	}
@@ -410,4 +416,111 @@ function permissionAreaFun(doc){
 		    +'<input type="text" class="a"  name="permission_area_code" /><br/><br/>'
 	}
 	doc.parentElement.innerHTML=text;
+}
+function certauth41Fun(doc){
+	text='';
+	for(var i=0;i<doc.value;i++){
+		text += '证书链数据：'
+    		+'<input type="text" class="a"  name="certauth41" /><br/><br/>';
+	}
+	document.getElementById("number411").innerHTML = text;
+}
+function cert41Fun(doc){
+	text= '';
+	for(var i=0;i<doc.value;i++){
+		text +='证书数据：'
+    		+'<input type="text" class="a"  name="certh41" /><br/><br/>';
+	}
+	document.getElementById("number412").innerHTML = text;
+}
+function logicAddressFun(doc){
+	text ='';
+	for(var i=0;i<doc.value;i++){
+		text += '物理地址：'
+			+'<input type="text" class="a"  name="physical_address" /><br/><br/>'
+			+'资源编码：'
+			+'<input type="text" class="a"  name="logic_address" /><br/><br/><br/>';
+	}
+	document.getElementById("number05").innerHTML = text;
+}
+/*
+function (doc) {
+	text = '';
+	for(var i=0;i<doc.value;i++){
+		text +='';
+	}
+	document.getElementById("").innerHTML = text;
+}
+*/
+function resourceCode06Fun(doc) {
+	text = '';
+	for(var i=0;i<doc.value;i++){
+		text +='资源编码：'
+			+'<input type="text" class="a"  name="resource_code06" /><br/><br/>';
+	}
+	document.getElementById("number06").innerHTML = text;
+}
+function resourceCode07Fun(doc) {
+	text = '';
+	for(var i=0;i<doc.value;i++){
+		text +='资源编码：'
+			+'<input type="text" class="a"  name="resource_code07" /><br/><br/>';
+	}
+	document.getElementById("number07").innerHTML = text;
+}
+function resourceCode08Fun(doc) {
+	text = '';
+	for(var i=0;i<doc.value;i++){
+		text +='资源编码：'
+			+'<input type="text" class="a"  name="resource_code08" /><br/><br/>';
+	}
+	document.getElementById("number08").innerHTML = text;
+}
+function rueryCodeFun(doc) {
+	text = '';
+	for(var i=0;i<doc.value;i++){
+		text +='查询信息类型：'
+			+'<select name="query_code" class="a">'
+			+'<option value="1">终端音量</option>'
+			+'<option value="2">本地地址</option>'
+			+'<option value="3">回传地址</option>'
+			+'<option value="4">终端资源编码</option>'
+			+'<option value="5">物理地址编码</option>'
+			+'<option value="6">工作状态</option>'
+			+'<option value="7">故障状态</option>'
+			+'</select><br/><br/>';
+	}
+	document.getElementById("number081").innerHTML = text;
+}
+function resourceCode0bFun(doc) {
+	text = '';
+	for(var i=0;i<doc.value;i++){
+		text +='资源编码：'
+			+'<input type="text" class="a"  name="resource_code0b" /><br/><br/>';
+	}
+	document.getElementById("number0b").innerHTML = text;
+}
+function resourceCode3fFun(doc) {
+	text = '';
+	for(var i=0;i<doc.value;i++){
+		text +='资源编码：'
+			+'<input type="text" class="a"  name="resource_code3f" /><br/><br/>';
+	}
+	document.getElementById("number3f").innerHTML = text;
+}
+function certauth40Fun(doc){
+	text='';
+	for(var i=0;i<doc.value;i++){
+		text += '证书链数据：'
+    		+'<input type="text" class="a"  name="certauth40" /><br/><br/>';
+	}
+	document.getElementById("number401").innerHTML = text;
+}
+function cert40Fun(doc){
+	text= '';
+	for(var i=0;i<doc.value;i++){
+		text +='证书数据：'
+    		+'<input type="text" class="a"  name="certh40" /><br/><br/>';
+	}
+	document.getElementById("number402").innerHTML = text;
 }

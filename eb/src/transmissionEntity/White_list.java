@@ -13,6 +13,7 @@ public class White_list {
 	private int permission_area_number;
 	private int permission_area_length;
 	private String[] permission_area_code;
+	
 	public int getOper_type() {
 		return oper_type;
 	}

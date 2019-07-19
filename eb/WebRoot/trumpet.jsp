@@ -154,22 +154,29 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     	</div>
     	
     	<div id="type41" style="display:none;">
-    		<div id="codeid">
-    			证书链个数：
-    			<input type="text" class="a"  name="permission_area_number" id="permission_area_number" oninput="permissionAreaFun(this)"/><br/><br/><br/>
+    		证书链个数：
+    		<input type="text" class="a"  name="certauth_number41" id="certauth_number41" oninput="certauth41Fun(this)"/><br/><br/><br/>
+    		<div id="number411">
 	    		证书链数据：
-	    		<input type="text" class="a"  name="permission_area_code" /><br/><br/>
+	    		<input type="text" class="a"  name="certauth41" /><br/><br/>
 	    	</div><br/><br/><br/>
-	    	<div id="codeid">
-    			证书个数：
-    			<input type="text" class="a"  name="permission_area_number" id="permission_area_number" oninput="permissionAreaFun(this)"/><br/><br/><br/>
+	    	证书个数：
+    		<input type="text" class="a"  name="cert_number41" id="cert_number41" oninput="cert41Fun(this)"/><br/><br/><br/>
+	    	<div id="number412">
 	    		证书数据：
-	    		<input type="text" class="a"  name="permission_area_code" /><br/><br/>
+	    		<input type="text" class="a"  name="certh41" /><br/><br/>
 	    	</div><br/><br/><br/>
     	</div>
     	
     	<div id="type05" style="display:none;">
-    		
+    		设置数量：
+    		<input type="text" class="a"  name="logic_address_number" id="logic_address_number" oninput="logicAddressFun(this)"/><br/><br/><br/>
+    		<div id="number05">
+    			物理地址：
+	    		<input type="text" class="a"  name="physical_address" /><br/><br/>
+	    		资源编码：
+	    		<input type="text" class="a"  name="logic_address" /><br/><br/><br/>
+    		</div>
     	</div>
     	
     	<div id="type06" style="display:none;">
@@ -179,7 +186,137 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	    	<select name="resource_code_type06" class="a">
 	    		<option value="1">逻辑码寻址</option>
 	    		<option value="2">物理码寻址</option>
-	    	</select>
+	    	</select><br/><br/>
+	    	资源编码数量：
+    		<input type="text" class="a"  name="resource_code_number06" id="resource_code_number06" oninput="resourceCode06Fun(this)"/><br/><br/><br/>
+    		<div id="number06">
+    			资源编码：
+	    		<input type="text" class="a"  name="resource_code06" /><br/><br/>
+    		</div>
+    	</div>
+    	<div id="type07" style="display:none;">
+    		回传地址类型：
+   			<select name="reback_type07" class="a">
+				<option value="1">短信</option>
+				<option value="2">IP 地址和端口(示例：192.168.22.56:8080)</option>
+				<option value="3">域名和端口号(示例： www.chinaeb-lab.org:8080)</option>
+			</select><br/><br/>
+			回传地址数据：
+   			<input type="text" class="a"  name="reback_address07" /><br/><br/>
+   			地址码类型：
+	    	<select name="resource_code_type07" class="a">
+	    		<option value="1">逻辑码寻址</option>
+	    		<option value="2">物理码寻址</option>
+	    	</select><br/><br/>
+	    	资源编码数量：
+    		<input type="text" class="a"  name="resource_code_number07" id="resource_code_number07" oninput="resourceCode07Fun(this)"/><br/><br/><br/>
+    		<div id="number07">
+    			资源编码：
+	    		<input type="text" class="a"  name="resource_code07" /><br/><br/>
+    		</div>
+    	</div>
+    	<div id="type08" style="display:none;">
+    		回传地址类型：
+   			<select name="reback_type08" class="a">
+				<option value="1">短信</option>
+				<option value="2">IP 地址和端口(示例：192.168.22.56:8080)</option>
+				<option value="3">域名和端口号(示例： www.chinaeb-lab.org:8080)</option>
+			</select><br/><br/>
+			回传地址数据：
+   			<input type="text" class="a"  name="reback_address08" /><br/><br/>
+   			地址码类型：
+	    	<select name="resource_code_type08" class="a">
+	    		<option value="1">逻辑码寻址</option>
+	    		<option value="2">物理码寻址</option>
+	    	</select><br/><br/>
+	    	资源编码数量：
+    		<input type="text" class="a"  name="resource_code_number08" id="resource_code_number08" oninput="resourceCode08Fun(this)"/><br/><br/><br/>
+    		<div id="number08">
+    			资源编码：
+	    		<input type="text" class="a"  name="resource_code08" /><br/><br/>
+    		</div><br/>
+    		查询参数数量：
+    		<input type="text" class="a"  name="ruery_code_number" id="ruery_code_number" oninput="rueryCodeFun(this)"/><br/><br/><br/>
+    		<div id = "number081">
+    			查询信息类型：
+		    	<select name="query_code" class="a">
+		    		<option value="1">终端音量</option>
+		    		<option value="2">本地地址</option>
+		    		<option value="3">回传地址</option>
+		    		<option value="4">终端资源编码</option>
+		    		<option value="5">物理地址编码</option>
+		    		<option value="6">工作状态</option>
+		    		<option value="7">故障状态</option>
+		    	</select><br/><br/>
+    		</div>
+    	</div>
+    	<div id="type09" style="display:none;">
+    		指定时间：
+    		<input type="datetime-local" class="a"  name="time" /><br/><br/>
+    		指定时间（秒）：
+    		<input type="text" class="a"  name="second" /><br/><br/>
+    	</div>
+    	<div id="type0a" style="display:none;">
+    		终端本机IP地址：
+    		<input type="text" class="a"  name="ip" /><br/><br/>
+    		子网掩码：
+    		<input type="text" class="a"  name="subnet_mask" /><br/><br/>
+    		网关：
+    		<input type="text" class="a"  name="gateway" /><br/><br/>
+    		地址码类型：
+	    	<select name="resource_code_type0a" class="a">
+	    		<option value="1">逻辑码寻址</option>
+	    		<option value="2">物理码寻址</option>
+	    	</select><br/><br/>
+    		资源编码：
+    		<input type="text" class="a"  name="resource_code0a" /><br/><br/>
+    	</div>
+    	<div id="type0b" style="display:none;">
+    		回传周期（秒）：
+    		<input type="text" class="a"  name="reback_cycle0b" /><br/><br/>
+    		地址码类型：
+	    	<select name="resource_code_type0b" class="a">
+	    		<option value="1">逻辑码寻址</option>
+	    		<option value="2">物理码寻址</option>
+	    	</select><br/><br/>
+	    	资源编码数量：
+    		<input type="text" class="a"  name="resource_code_number0b" id="resource_code_number0b" oninput="resourceCode0bFun(this)"/><br/><br/><br/>
+    		<div id="number0b">
+    			资源编码：
+	    		<input type="text" class="a"  name="resource_code0b" /><br/><br/>
+    		</div><br/>
+    	</div>
+    	<div id="type3f" style="display:none;">
+    		喇叭开关：
+	    	<select name="switch_option" class="a">
+	    		<option value="1">关闭喇叭</option>
+	    		<option value="2">开启喇叭</option>
+	    	</select><br/><br/>
+	    	地址码类型：
+	    	<select name="resource_code_type3f" class="a">
+	    		<option value="1">逻辑码寻址</option>
+	    		<option value="2">物理码寻址</option>
+	    	</select><br/><br/>
+	    	资源编码数量：
+    		<input type="text" class="a"  name="resource_code_number3f" id="resource_code_number3f" oninput="resourceCode3fFun(this)"/><br/><br/><br/>
+    		<div id="number3f">
+    			资源编码：
+	    		<input type="text" class="a"  name="resource_code3f" /><br/><br/>
+    		</div><br/>
+    	</div>
+    	<div id="type40" style="display:none;">
+    		证书链个数：
+    		<input type="text" class="a"  name="certauth_number40" id="certauth_number40" oninput="certauth40Fun(this)"/><br/><br/><br/>
+    		<div id="number401">
+	    		证书链数据：
+	    		<input type="text" class="a"  name="certauth40" /><br/><br/>
+	    	</div><br/><br/><br/>
+	    	证书个数：
+    		<input type="text" class="a"  name="cert_number40" id="cert_number40" oninput="cert40Fun(this)"/><br/><br/><br/>
+	    	<div id="number402">
+	    		证书数据：
+	    		<input type="text" class="a"  name="certh40" /><br/><br/>
+	    	</div><br/><br/><br/>
     	</div>
     	<input type="submit" class="a button button-primary button-rounded button-small" value="提交" /><br/>
     </form>
