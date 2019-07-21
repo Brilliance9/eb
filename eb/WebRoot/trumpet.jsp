@@ -56,8 +56,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			<option value="0b">通用回传周期设置</option>
 			<option value="3f">通用终端功放开关指令</option>
 			<option value="40">通用证书更新</option>
-			<option value="01">TS方案中的特殊指令</option>
-			<option value="02">RDS方案中的特殊指令</option>
+<!--  			<option value="01">TS方案中的特殊指令</option>
+			<option value="02">RDS方案中的特殊指令</option>-->
     	</select><br/><br/><br/><br/>
     	
     	<div id="type0c" style="display:block;">

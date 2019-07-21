@@ -1,6 +1,9 @@
 package servlet;
 
 import java.io.IOException;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.Enumeration;
 
 import javax.servlet.ServletException;
@@ -433,6 +436,105 @@ public class TransmissionServlet extends HttpServlet {
 			resource_code_length07 = resource_code07[i].length();
 		}
 		tt.setResource_code_length07(resource_code_length07);
+		
+		//08
+		tt.setReback_type08(String2Int(request.getParameter("reback_type08")));
+		tt.setReback_address08(request.getParameter("reback_address08"));
+		tt.setReback_address_length08(tt.getReback_address08().length());
+		tt.setResource_code_type08(String2Int(request.getParameter("resource_code_type08")));
+		tt.setResource_code_number08(String2Int(request.getParameter("resource_code_number08")));
+		String[] resource_code08=request.getParameterValues("resource_code08");
+		tt.setResource_code08(resource_code08);
+		int resource_code_length08 =0;
+		for(int i=0;i<resource_code08.length;i++){
+			resource_code_length08 = resource_code08[i].length();
+		}
+		tt.setResource_code_length08(resource_code_length08);
+		int ruery_code_number = String2Int(request.getParameter("ruery_code_number"));
+		int[] query_code = String2Ints(request.getParameterValues("query_code"));
+		tt.setRuery_code_number(ruery_code_number);
+		tt.setQuery_code(query_code);
+		
+		//09
+		String time= request.getParameter("time");
+		
+		if(protocol_type == 0x09){
+			String[] str = time.split("T");
+			String time2 = str[0]+" "+str[1]+":"+request.getParameter("second");
+			
+			
+			//设置时间格式，将该时间格式的时间转换为时间戳
+	        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+	        Date date;
+			try {
+				date = simpleDateFormat.parse(time2);
+				long time3 = date.getTime()/1000;
+				tt.setTime(time3);
+			} catch (ParseException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+	        
+		}
+		
+		//0a
+		tt.setIp(request.getParameter("ip"));
+		tt.setSubnet_mask(request.getParameter("subnet_mask"));
+		tt.setGateway(request.getParameter("gateway"));
+		tt.setResource_code_type0a(String2Int(request.getParameter("resource_code_type0a")));
+		tt.setResource_code0a(request.getParameter("resource_code0a"));
+		tt.setResource_code_length0a(tt.getResource_code0a().length());
+		
+		//0b
+		tt.setReback_cycle0b(String2Int(request.getParameter("reback_cycle0b")));
+		tt.setResource_code_type0b(String2Int(request.getParameter("resource_code_type0b")));
+		tt.setResource_code_number0b(String2Int(request.getParameter("resource_code_number0b")));
+		String[] resource_code0b=request.getParameterValues("resource_code0b");
+		tt.setResource_code0b(resource_code0b);
+		int resource_code_length0b =0;
+		for(int i=0;i<resource_code0b.length;i++){
+			resource_code_length0b = resource_code0b[i].length();
+		}
+		tt.setResource_code_length0b(resource_code_length0b);
+		
+		//3f
+		tt.setSwitch_option(String2Int(request.getParameter("switch_option")));
+		tt.setResource_code_type3f(String2Int(request.getParameter("resource_code_type3f")));
+		tt.setResource_code_number3f(String2Int(request.getParameter("resource_code_number3f")));
+		String[] resource_code3f=request.getParameterValues("resource_code3f");
+		tt.setResource_code3f(resource_code3f);
+		int resource_code_length3f =0;
+		for(int i=0;i<resource_code3f.length;i++){
+			resource_code_length3f = resource_code3f[i].length();
+		}
+		tt.setResource_code_length3f(resource_code_length3f);
+		
+		//40
+		int certauth_number40 = String2Int(request.getParameter("certauth_number40"));
+		
+		int cert_number40 = String2Int(request.getParameter("cert_number40"));
+		
+		
+		int[] certauth_length40 = new int[certauth_number40];
+		String[] certauth40 = request.getParameterValues("certauth40");
+		int[] certh_length40 = new int[cert_number40];
+		String[] certh40 = request.getParameterValues("certh40");
+		
+		for(int i=0;i<certauth_number40;i++){
+			certauth_length40[i]=certauth40[i].length();
+		}
+		for(int i=0;i<cert_number40;i++){
+			certh_length40[i] = certh40[i].length();
+		}
+		
+		tt.setCertauth_number40(certauth_number40);
+		tt.setCertauth_length40(certauth_length40);
+		tt.setCertauth40(certauth40);
+		tt.setCert_number40(cert_number40);
+		tt.setCerth_length40(certh_length40);
+		tt.setCerth41(certh40);
+		
+		
 		System.out.println(tt.toString());
 //		tt.set(request.getParameter(""));
 //		tt.set(String2Int(request.getParameter("")));

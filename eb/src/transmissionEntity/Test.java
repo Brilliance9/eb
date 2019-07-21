@@ -12,6 +12,7 @@ public class Test {
 		enc.ASCIIEnc(enc, s);
 		enc.encInt(0xc, 8);
 		enc.printmsg();
+		System.out.println(System.currentTimeMillis() / 1000);
 	}
 
 }
